@@ -5,6 +5,8 @@ using UnityEngine;
 public class CurrentRewardCanvasController : MonoBehaviour
 {
     [SerializeField] private CurrentReward currentRewardPrefab;
+    [SerializeField] private Transform currentRewardsParent;
+
 
     private List<CurrentReward> currentRewards;
 
