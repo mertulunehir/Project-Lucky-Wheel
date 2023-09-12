@@ -5,6 +5,8 @@ using Zenject;
 
 public class LuckyWheelDataController : MonoBehaviour
 {
+    [SerializeField] private List<WheelElementController> currentWheelElements = new List<WheelElementController>();
+
     [Inject] private RewardsDatabase rewardsDatabase;
 
     private List<Rewards> currentRewards;
@@ -12,15 +14,14 @@ public class LuckyWheelDataController : MonoBehaviour
     public void GetWheelData(int zoneNumber)
     {
         currentRewards = rewardsDatabase.GetRandomElementsForLuckyWheel(zoneNumber);
-
-        foreach (Rewards item in currentRewards)
-        {
-            Debug.Log(item.itemSO.itemName);
-        }
     }
 
     public void SetWheelElementData()
     {
-
+        for(int i = 0;i<currentWheelElements.Count;i++)
+        {
+            int randomRewardAmount = Random.Range(currentRewards[i].minRewardAmount, currentRewards[i].maxRewardAmount);
+            currentWheelElements[i].SetWheelElementData(currentRewards[i].itemSO, randomRewardAmount);
+        }
     }
 }

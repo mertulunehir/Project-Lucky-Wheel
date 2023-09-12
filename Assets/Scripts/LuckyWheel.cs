@@ -19,6 +19,7 @@ public class LuckyWheel : MonoBehaviour
     private void Start()
     {
         wheelDataController.GetWheelData(currentZoneNumber);
+        wheelDataController.SetWheelElementData();
     }
 
 
