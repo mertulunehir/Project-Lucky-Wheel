@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class LuckyWheel : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private int currentZoneNumber = 1;
+
+    private LuckyWheelDataController wheelDataController;
+    private LuckyWheelRotateController wheelRotateController;
+
+
+    void Awake()
     {
-        
+        wheelDataController = GetComponent<LuckyWheelDataController>();
+        wheelRotateController = GetComponent<LuckyWheelRotateController>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        wheelDataController.GetWheelData(currentZoneNumber);
     }
+
+
 }

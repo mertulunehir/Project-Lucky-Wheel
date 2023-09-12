@@ -1,18 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class LuckyWheelDataController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [Inject] private RewardsDatabase rewardsDatabase;
+
+    private List<Rewards> currentRewards;
+
+    public void GetWheelData(int zoneNumber)
     {
-        
+        currentRewards = rewardsDatabase.GetRandomElementsForLuckyWheel(zoneNumber);
+
+        foreach (Rewards item in currentRewards)
+        {
+            Debug.Log(item.itemSO.itemName);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetWheelElementData()
     {
-        
+
     }
 }

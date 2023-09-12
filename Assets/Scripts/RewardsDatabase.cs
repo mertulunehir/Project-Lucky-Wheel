@@ -9,22 +9,9 @@ public class RewardsDatabase : MonoBehaviour
     public List<Rewards> firstTierRewards = new List<Rewards>();
     public List<Rewards> secondTierRewards = new List<Rewards>();
     public List<Rewards> thirdTierRewards = new List<Rewards>();
-    // Start is called before the first frame update
-    void Start()
-    {
-        List<Rewards> rewards = GetRandomElementsForLuckyWheel(1);
-        foreach (Rewards item in rewards)
-        {
-            Debug.Log(item.itemSO.itemName);
-        }
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    private const int silverRewardZoneNumber = 5;
+    private const int goldRewardZoneNumber = 30;
 
     public List<Rewards> GetRandomElementsForLuckyWheel(int zoneNumber)
     {
@@ -32,7 +19,7 @@ public class RewardsDatabase : MonoBehaviour
         {
             return GetRandomElements(firstTierRewards);
         }
-        else if (zoneNumber == 5)
+        else if (zoneNumber == silverRewardZoneNumber)
         {
             return GetRandomElements(firstTierRewards);
         }
@@ -41,7 +28,7 @@ public class RewardsDatabase : MonoBehaviour
             return GetRandomElements(secondTierRewards);
 
         }
-        else if(zoneNumber == 30)
+        else if(zoneNumber == goldRewardZoneNumber)
         {
             return GetRandomElements(thirdTierRewards);
         }
