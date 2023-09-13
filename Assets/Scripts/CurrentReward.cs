@@ -6,7 +6,6 @@ public class CurrentReward : MonoBehaviour
 {
     
     private CurrentRewardDataController dataController;
-    private ItemSO currentRewardSO;
 
     void Start()
     {

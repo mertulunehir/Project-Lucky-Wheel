@@ -5,11 +5,9 @@ using Zenject;
 
 public class LuckyWheel : MonoBehaviour
 {
-
-    private int currentZoneNumber = 1;
-
     private LuckyWheelDataController wheelDataController;
     private LuckyWheelRotateController wheelRotateController;
+    private LuckyWheelZoneController wheelZoneController;
 
     [Inject] private SceneChangeManager sceneManager;
 
@@ -17,17 +15,18 @@ public class LuckyWheel : MonoBehaviour
     {
         wheelDataController = GetComponent<LuckyWheelDataController>();
         wheelRotateController = GetComponent<LuckyWheelRotateController>();
+        wheelZoneController = GetComponent<LuckyWheelZoneController>();
     }
 
     private void Start()
     {
-        wheelDataController.GetWheelData(currentZoneNumber);
+        wheelDataController.GetWheelData(wheelZoneController.GetZoneNumber());
         wheelDataController.SetWheelElementData();
     }
 
     public void ChooseRewardAfterButtonClick()
     {
-        wheelDataController.ChooseRewardAfterButtonClick();
+        //wheelDataController.ChooseRewardAfterButtonClick();
         int currentRewardIndex = wheelDataController.GetCurrentRewardIndex();
         wheelRotateController.SetCurrentRewardIndex(currentRewardIndex);
         wheelRotateController.RotateLuckyWheel();

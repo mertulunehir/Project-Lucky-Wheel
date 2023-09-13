@@ -10,6 +10,8 @@ public class RewardsDatabase : MonoBehaviour
     public List<Rewards> secondTierRewards = new List<Rewards>();
     public List<Rewards> thirdTierRewards = new List<Rewards>();
 
+    public Rewards bomb;
+
     private const int silverRewardZoneNumber = 5;
     private const int goldRewardZoneNumber = 30;
 

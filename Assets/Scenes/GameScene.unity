@@ -2828,6 +2828,10 @@ MonoBehaviour:
   - itemSO: {fileID: 11400000, guid: 630a7449c53fe44d5b677389b03cb31c, type: 2}
     minRewardAmount: 30
     maxRewardAmount: 80
+  bomb:
+    itemSO: {fileID: 11400000, guid: 6a0cb522dc003476e92f5d166ba3c74c, type: 2}
+    minRewardAmount: 1
+    maxRewardAmount: 1
 --- !u!1 &1388769055
 GameObject:
   m_ObjectHideFlags: 0
@@ -4651,6 +4655,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6de43328af2c047d3aa1c6026ccfb7f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  giveUpButton: {fileID: 836698679}
+  reviveButton: {fileID: 2013886106}
+  continueButton: {fileID: 2136293664}
 --- !u!114 &2016249585
 MonoBehaviour:
   m_ObjectHideFlags: 0

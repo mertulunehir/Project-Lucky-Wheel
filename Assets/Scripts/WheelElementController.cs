@@ -19,6 +19,12 @@ public class WheelElementController : MonoBehaviour
 
         rewardAmountText.text = rewardAmount.ToString();
         rewardIcon.sprite = currentItemSO.itemIcon;
+
+        if (currentItemSO.itemName.Equals("Bomb"))
+            rewardAmountText.gameObject.SetActive(false);
+        else
+            rewardAmountText.gameObject.SetActive(true);
+
     }
 
 }

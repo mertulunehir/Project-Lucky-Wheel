@@ -12,6 +12,13 @@ public class RewardSceneDataController : MonoBehaviour
     [SerializeField] private TMP_Text rewardAmount;
     [SerializeField] private TMP_Text rewardSceneInfoText;
 
+    private RewardScene rewardScene;
+
+    private void Start()
+    {
+        rewardScene = GetComponent<RewardScene>();
+    }
+
     public void SetRewardSceneData(ItemSO currentRewardSO, int amount)
     {
         rewardBackground.color = currentRewardSO.rewardBackgroundColor;
@@ -21,10 +28,13 @@ public class RewardSceneDataController : MonoBehaviour
         if(currentRewardSO.itemName.Equals("Bomb"))
         {
             rewardSceneInfoText.text = "You Failed!";
+            rewardScene.ButtonBombConfig();
         }
         else
         {
             rewardSceneInfoText.text = "You Rock! Keep Going..";
+            rewardScene.ButtonRewardConfig();
+
         }
     }
 }
