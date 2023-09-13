@@ -11,6 +11,8 @@ public class LuckyWheelDataController : MonoBehaviour
 
     private List<Rewards> currentRewards;
 
+    private Rewards currentChosenReward;
+
     public void GetWheelData(int zoneNumber)
     {
         currentRewards = rewardsDatabase.GetRandomElementsForLuckyWheel(zoneNumber);
@@ -23,5 +25,15 @@ public class LuckyWheelDataController : MonoBehaviour
             int randomRewardAmount = Random.Range(currentRewards[i].minRewardAmount, currentRewards[i].maxRewardAmount);
             currentWheelElements[i].SetWheelElementData(currentRewards[i].itemSO, randomRewardAmount);
         }
+    }
+
+    public void ChooseRewardAfterButtonClick()
+    {
+        currentChosenReward = currentRewards[Random.Range(0, currentRewards.Count)];
+    }
+
+    public int GetCurrentRewardIndex()
+    {
+        return currentRewards.IndexOf(currentChosenReward);
     }
 }

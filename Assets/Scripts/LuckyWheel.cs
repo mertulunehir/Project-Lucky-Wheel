@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LuckyWheel : MonoBehaviour
 {
+
     private int currentZoneNumber = 1;
 
     private LuckyWheelDataController wheelDataController;
@@ -22,5 +23,12 @@ public class LuckyWheel : MonoBehaviour
         wheelDataController.SetWheelElementData();
     }
 
+    public void ChooseRewardAfterButtonClick()
+    {
+        wheelDataController.ChooseRewardAfterButtonClick();
+        int currentRewardIndex = wheelDataController.GetCurrentRewardIndex();
+        wheelRotateController.SetCurrentRewardIndex(currentRewardIndex);
+        wheelRotateController.RotateLuckyWheel();
+    }
 
 }
