@@ -4027,6 +4027,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7424465b599994f6ba42f19a5aa4e85f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wheelRotateParent: {fileID: 342622117}
 --- !u!114 &1915451275
 MonoBehaviour:
   m_ObjectHideFlags: 0

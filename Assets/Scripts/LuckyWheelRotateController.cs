@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class LuckyWheelRotateController : MonoBehaviour
 {
-    private Transform wheelRotateParent;
+    [SerializeField] private Transform wheelRotateParent;
     private int currentRewardIndex;
     // Start is called before the first frame update
     void Start()

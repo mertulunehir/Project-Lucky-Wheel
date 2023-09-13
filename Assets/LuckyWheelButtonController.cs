@@ -13,6 +13,7 @@ public class LuckyWheelButtonController : MonoBehaviour
     private void Start()
     {
         luckyWheel = GetComponent<LuckyWheel>();
+        canPressButton = true;
     }
     private void OnRotateButtonPressed()
     {
