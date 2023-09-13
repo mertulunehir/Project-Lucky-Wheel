@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class LuckyWheel : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class LuckyWheel : MonoBehaviour
     private LuckyWheelDataController wheelDataController;
     private LuckyWheelRotateController wheelRotateController;
 
+    [Inject] private SceneChangeManager sceneManager;
 
     void Awake()
     {
@@ -29,6 +31,12 @@ public class LuckyWheel : MonoBehaviour
         int currentRewardIndex = wheelDataController.GetCurrentRewardIndex();
         wheelRotateController.SetCurrentRewardIndex(currentRewardIndex);
         wheelRotateController.RotateLuckyWheel();
+    }
+
+    public void OpenRewardSceneAfterLuckyWheel()
+    {
+        Debug.Log(wheelDataController.GetCurrentRewardItemSO().itemName + " " + wheelDataController.GetCurrentRewardItemAmount());
+        sceneManager.OpenRewardScene(wheelDataController.GetCurrentRewardItemSO(),wheelDataController.GetCurrentRewardItemAmount());
     }
 
 }
