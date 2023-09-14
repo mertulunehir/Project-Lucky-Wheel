@@ -17,16 +17,13 @@ public class CollectedRewardDataController : MonoBehaviour
         currentColletedItemSO = collectedItem;
         currentCollectedItemAmount = amount;
         collectedRewardImage.sprite = currentColletedItemSO.itemIcon;
-
         collectedRewardAmount.text = currentCollectedItemAmount.ToString();
     }
 
     public void UpdateCollectedRewardData(int amount)
     {
         currentCollectedItemAmount += amount;
-
         collectedRewardAmount.text = currentCollectedItemAmount.ToString();
-
     }
 
     public ItemSO GetItemSO()

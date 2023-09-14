@@ -12,8 +12,6 @@ public class RewardsDatabase : MonoBehaviour
 
     public Rewards bomb;
 
-
-
     public List<Rewards> GetRandomElementsForLuckyWheel(int zoneNumber)
     {
         if(zoneNumber<5)
@@ -23,12 +21,10 @@ public class RewardsDatabase : MonoBehaviour
         else if(zoneNumber<15)
         {
             return GetRandomElements(secondTierRewards);
-
         }
         else
         {
             return GetRandomElements(thirdTierRewards);
-
         }
     }
 

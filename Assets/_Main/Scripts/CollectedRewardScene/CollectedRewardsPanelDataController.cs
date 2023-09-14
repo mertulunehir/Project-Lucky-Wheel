@@ -29,7 +29,7 @@ public class CollectedRewardsPanelDataController : MonoBehaviour
         {
             if (collectedItemSO.itemName.Equals("Bomb"))
             {
-
+                //TODO: New features might be added here
             }
             else
             {
@@ -37,29 +37,22 @@ public class CollectedRewardsPanelDataController : MonoBehaviour
                 collectedRewardsSOList.Add(collectedItemSO);
                 collectedReward.GetComponent<CollectedReward>().SetCollectedRewardData(collectedItemSO, amount);
                 collectedRewardList.Add(collectedReward.GetComponent<CollectedReward>());
-
             }
         }
     }
 
     public void GiveCollectedRewards()
     {
-        Debug.Log("11111");
-        //TODO : normally all colledted rewards will be given to the player but right now only gold and coin gived to player
+        //TODO : Normally all collected rewards will be given to the player but right now only gold and coin gived to player
         foreach(CollectedReward reward in collectedRewardList)
         {
             if(reward.GetCollectedRewardItemSO().itemName.Equals("Gold"))
             {
-                Debug.Log("22222");
-
                 moneyManager.UpdateGold(reward.GetCollectedItemAmount());
             }
             else if(reward.GetCollectedRewardItemSO().itemName.Equals("Cash"))
             {
-                Debug.Log("33333");
-
                 moneyManager.UpdateCash(reward.GetCollectedItemAmount());
-
             }
         }
 

@@ -42,8 +42,7 @@ public class LuckyWheelZoneController : MonoBehaviour
     {
         string tmpZoneText;
         switch (currentZone)
-        {
-            
+        {    
             case 1:
                 tmpZoneText =  currentZone.ToString() + "st";
                 break;
@@ -58,7 +57,6 @@ public class LuckyWheelZoneController : MonoBehaviour
             default:
                 tmpZoneText = currentZone.ToString() + "th";
                 break;
-
         }
 
         return tmpZoneText;

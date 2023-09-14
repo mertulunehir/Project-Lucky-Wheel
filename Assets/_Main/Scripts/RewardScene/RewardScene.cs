@@ -11,7 +11,6 @@ public class RewardScene : MonoBehaviour
 
     [Inject]private CollectedRewardsPanel collectedRewards;
 
-
     void Start()
     {
         rewardSceneDataController = GetComponent<RewardSceneDataController>();

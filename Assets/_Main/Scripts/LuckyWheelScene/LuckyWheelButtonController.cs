@@ -32,12 +32,10 @@ public class LuckyWheelButtonController : MonoBehaviour
     private void OnEnable()
     {
         rotateButton.onClick.AddListener(OnRotateButtonPressed);
-
     }
 
     private void OnDisable()
     {
         rotateButton.onClick.RemoveListener(OnRotateButtonPressed);
-
     }
 }

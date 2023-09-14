@@ -11,7 +11,6 @@ public class SceneChangeManager : MonoBehaviour
         luckyWheelSceneParent.gameObject.SetActive(false);
         rewardSceneParent.gameObject.SetActive(true);
         rewardSceneParent.parent.GetComponent<RewardScene>().SetRewardSceneData(currenRewardSO, amount);
-
     }
     public void OpenLuckyWheelSceneAfterReward()
     {
