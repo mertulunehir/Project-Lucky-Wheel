@@ -10,6 +10,7 @@ public class LuckyWheel : MonoBehaviour
     private LuckyWheelZoneController wheelZoneController;
     private LuckyWheelButtonController wheelButtonController;
 
+
     [Inject] private SceneChangeManager sceneManager;
 
     void Awake()

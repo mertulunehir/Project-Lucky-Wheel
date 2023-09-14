@@ -21,16 +21,18 @@ public class LuckyWheelDataController : MonoBehaviour
     public void GetWheelData(int zoneNumber)
     {
         currentRewards = rewardsDatabase.GetRandomElementsForLuckyWheel(zoneNumber);
+        GetComponent<LuckyWheelImageController>().SetLuckyWheelImage(zoneNumber);
+        SetBombPositionOnWheel(zoneNumber);
+    }
 
-
+    private void SetBombPositionOnWheel(int zoneNumber)
+    {
         if (zoneNumber < silverRewardZoneNumber)
         {
             currentRewards[Random.Range(0, currentRewards.Count)] = rewardsDatabase.bomb;
-
         }
         else if (zoneNumber == silverRewardZoneNumber)
         {
-
         }
         else if (zoneNumber < goldRewardZoneNumber)
         {
@@ -38,7 +40,6 @@ public class LuckyWheelDataController : MonoBehaviour
         }
         else if (zoneNumber == goldRewardZoneNumber)
         {
-
         }
         else
         {
@@ -59,11 +60,6 @@ public class LuckyWheelDataController : MonoBehaviour
         }
 
         currentChosenReward = currentRewards[currentChosenRewardIndex];
-
-    }
-
-    public void ChooseRewardAfterButtonClick()
-    {
     }
 
     public int GetCurrentRewardIndex()

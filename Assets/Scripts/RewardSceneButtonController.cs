@@ -35,7 +35,7 @@ public class RewardSceneButtonController : MonoBehaviour
     private void OnReviveButtonClicked()
     {
         sceneManager.OpenLuckyWheelSceneAfterReward();
-        moneyManager.BuyWithGold(reviveButtonPrice);
+        moneyManager.BuyWithCash(reviveButtonPrice);
     }
 
     private void OnContinueButtonClicked()
@@ -62,7 +62,7 @@ public class RewardSceneButtonController : MonoBehaviour
         continueButton.gameObject.SetActive(false);
         reviveButton.gameObject.SetActive(true);
 
-        if (moneyManager.CanAffordBuyingWithGold(reviveButtonPrice))
+        if (moneyManager.CanAffordBuyingWithCash(reviveButtonPrice))
             reviveButton.interactable = true;
         else
             reviveButton.interactable = false;
