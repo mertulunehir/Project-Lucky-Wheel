@@ -8,34 +8,27 @@ public class RewardSceneButtonController : MonoBehaviour
 {
     [SerializeField]private Button giveUpButtonAfterReward, reviveButton, continueButton,giveUpButtonAfterBomb;
 
-
     [Inject] private SceneChangeManager sceneManager;
     [Inject] private MoneyManager moneyManager;
 
     private const int reviveButtonPrice = 50;
 
-
     private void OnGiveUpButtonClickedAfterReward()
     {
         GetComponent<RewardScene>().GiveCollectedRewards();
-
         sceneManager.OpenLuckyWheelSceneAfterGiveUp();
-
     }
 
     private void OnGiveUpButtonClickedAfterBomb()
     {
-
         GetComponent<RewardScene>().ClearCollectedRewards();
-
         sceneManager.OpenLuckyWheelSceneAfterGiveUp();
-
     }
 
     private void OnReviveButtonClicked()
     {
         sceneManager.OpenLuckyWheelSceneAfterReward();
-        moneyManager.BuyWithCash(reviveButtonPrice);
+        moneyManager.BuyWithGold(reviveButtonPrice);
     }
 
     private void OnContinueButtonClicked()
@@ -53,16 +46,12 @@ public class RewardSceneButtonController : MonoBehaviour
 
     public void BombCollectedButtonConfig()
     {
-        //TODO : if give up button clicked give no reward restart all currentRewards
-        //TODO : if revive buttonClicked give no reward but act like continue button
-        //TODO : check if revive button price is lower than current gold amount
-
         giveUpButtonAfterReward.gameObject.SetActive(false);
         giveUpButtonAfterBomb.gameObject.SetActive(true);
         continueButton.gameObject.SetActive(false);
         reviveButton.gameObject.SetActive(true);
 
-        if (moneyManager.CanAffordBuyingWithCash(reviveButtonPrice))
+        if (moneyManager.CanAffordBuyingWithGold(reviveButtonPrice))
             reviveButton.interactable = true;
         else
             reviveButton.interactable = false;

@@ -14,7 +14,7 @@ public class MoneyManagerCanvasController : MonoBehaviour
     }
     public void UpdateCashText(int currentCashAmount,int collectedAmount)
     {
-
+        DOTween.To(() => currentCashAmount, x => currentCashAmount = x, currentCashAmount+collectedAmount, 1).OnUpdate(()=> cashText.text = currentCashAmount.ToString());
     }
 
     public void UpdateGoldText(int currentGoldAmount)
@@ -24,6 +24,6 @@ public class MoneyManagerCanvasController : MonoBehaviour
 
     public void UpdateGoldText(int currentGoldAmount, int collectedAmount)
     {
-
+        DOTween.To(() => currentGoldAmount, x => currentGoldAmount = x, currentGoldAmount + collectedAmount, 1).OnUpdate(() => goldText.text = currentGoldAmount.ToString());
     }
 }
