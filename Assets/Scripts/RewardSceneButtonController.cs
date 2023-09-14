@@ -10,20 +10,28 @@ public class RewardSceneButtonController : MonoBehaviour
 
 
     [Inject] private SceneChangeManager sceneManager;
+    [Inject] private MoneyManager moneyManager;
+
+    private const int reviveButtonPrice = 50;
+
 
     private void OnGiveUpButtonClicked()
     {
+        GetComponent<RewardScene>().GiveCollectedRewards();
+
+        sceneManager.OpenLuckyWheelScene();
 
     }
 
     private void OnReviveButtonClicked()
     {
-        sceneManager.OpenLuckyWheelSceneContinue();
+        sceneManager.OpenLuckyWheelScene();
+        moneyManager.BuyWithGold(reviveButtonPrice);
     }
 
     private void OnContinueButtonClicked()
     {
-        sceneManager.OpenLuckyWheelSceneContinue();
+        sceneManager.OpenLuckyWheelScene();
     }
 
     public void RewardCollectedButtonConfig()
@@ -42,6 +50,11 @@ public class RewardSceneButtonController : MonoBehaviour
         giveUpButton.gameObject.SetActive(true);
         continueButton.gameObject.SetActive(false);
         reviveButton.gameObject.SetActive(true);
+
+        if (moneyManager.CanAffordBuyingWithGold(reviveButtonPrice))
+            reviveButton.interactable = true;
+        else
+            reviveButton.interactable = false;
     }
 
     private void OnEnable()

@@ -20,8 +20,8 @@ public class LuckyWheelDataController : MonoBehaviour
         currentRewards = rewardsDatabase.GetRandomElementsForLuckyWheel(zoneNumber);
 
         //TODO : Test
-        //for (int i = 0; i < currentRewards.Count; i++)
-        //    currentRewards[i] = rewardsDatabase.bomb;
+        for (int i = 0; i < currentRewards.Count; i++)
+            currentRewards[i] = rewardsDatabase.bomb;
 
         currentRewards[Random.Range(0, currentRewards.Count)] = rewardsDatabase.bomb;
     }

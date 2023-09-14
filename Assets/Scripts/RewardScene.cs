@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,5 +34,10 @@ public class RewardScene : MonoBehaviour
     {
         rewardSceneButtonController.BombCollectedButtonConfig();
 
+    }
+
+    public void GiveCollectedRewards()
+    {
+        collectedRewards.GiveCollectedRewards();
     }
 }
