@@ -6,7 +6,7 @@ using Zenject;
 
 public class RewardSceneButtonController : MonoBehaviour
 {
-    [SerializeField]private Button giveUpButton, reviveButton, continueButton;
+    [SerializeField]private Button giveUpButtonAfterReward, reviveButton, continueButton,giveUpButtonAfterBomb;
 
 
     [Inject] private SceneChangeManager sceneManager;
@@ -15,28 +15,38 @@ public class RewardSceneButtonController : MonoBehaviour
     private const int reviveButtonPrice = 50;
 
 
-    private void OnGiveUpButtonClicked()
+    private void OnGiveUpButtonClickedAfterReward()
     {
         GetComponent<RewardScene>().GiveCollectedRewards();
 
-        sceneManager.OpenLuckyWheelScene();
+        sceneManager.OpenLuckyWheelSceneAfterGiveUp();
+
+    }
+
+    private void OnGiveUpButtonClickedAfterBomb()
+    {
+
+        GetComponent<RewardScene>().ClearCollectedRewards();
+
+        sceneManager.OpenLuckyWheelSceneAfterGiveUp();
 
     }
 
     private void OnReviveButtonClicked()
     {
-        sceneManager.OpenLuckyWheelScene();
+        sceneManager.OpenLuckyWheelSceneAfterReward();
         moneyManager.BuyWithGold(reviveButtonPrice);
     }
 
     private void OnContinueButtonClicked()
     {
-        sceneManager.OpenLuckyWheelScene();
+        sceneManager.OpenLuckyWheelSceneAfterReward();
     }
 
     public void RewardCollectedButtonConfig()
     {
-        giveUpButton.gameObject.SetActive(true);
+        giveUpButtonAfterReward.gameObject.SetActive(true);
+        giveUpButtonAfterBomb.gameObject.SetActive(false);
         continueButton.gameObject.SetActive(true);
         reviveButton.gameObject.SetActive(false);
     }
@@ -47,7 +57,8 @@ public class RewardSceneButtonController : MonoBehaviour
         //TODO : if revive buttonClicked give no reward but act like continue button
         //TODO : check if revive button price is lower than current gold amount
 
-        giveUpButton.gameObject.SetActive(true);
+        giveUpButtonAfterReward.gameObject.SetActive(false);
+        giveUpButtonAfterBomb.gameObject.SetActive(true);
         continueButton.gameObject.SetActive(false);
         reviveButton.gameObject.SetActive(true);
 
@@ -59,13 +70,15 @@ public class RewardSceneButtonController : MonoBehaviour
 
     private void OnEnable()
     {
-        giveUpButton.onClick.AddListener(OnGiveUpButtonClicked);
+        giveUpButtonAfterReward.onClick.AddListener(OnGiveUpButtonClickedAfterReward);
+        giveUpButtonAfterBomb.onClick.AddListener(OnGiveUpButtonClickedAfterBomb);
         reviveButton.onClick.AddListener(OnReviveButtonClicked);
         continueButton.onClick.AddListener(OnContinueButtonClicked);
     }
     private void OnDisable()
     {
-        giveUpButton.onClick.RemoveListener(OnGiveUpButtonClicked);
+        giveUpButtonAfterReward.onClick.RemoveListener(OnGiveUpButtonClickedAfterReward);
+        giveUpButtonAfterBomb.onClick.RemoveListener(OnGiveUpButtonClickedAfterBomb);
         reviveButton.onClick.RemoveListener(OnReviveButtonClicked);
         continueButton.onClick.RemoveListener(OnContinueButtonClicked);
     }

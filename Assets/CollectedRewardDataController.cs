@@ -33,4 +33,9 @@ public class CollectedRewardDataController : MonoBehaviour
     {
         return currentColletedItemSO;
     }
+
+    public int GetItemAmount()
+    {
+        return currentCollectedItemAmount;
+    }
 }

@@ -21,4 +21,9 @@ public class CollectedRewardsPanel : MonoBehaviour
     {
         dataController.GiveCollectedRewards();
     }
+
+    internal void ClearCollectedRewards()
+    {
+        dataController.ClearCollectedReward();
+    }
 }

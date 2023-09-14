@@ -38,7 +38,7 @@ public class MoneyManagerDataController : MonoBehaviour
     public void UpdateCashAmount(int amount)
     {
         currentCashAmount += amount;
-        PlayerPrefs.SetInt("Cash", 0);
+        PlayerPrefs.SetInt("Cash", currentCashAmount);
     }
 
     public int GetCashAmount()
@@ -52,6 +52,6 @@ public class MoneyManagerDataController : MonoBehaviour
     public void UpdateGoldAmount(int amount)
     {
         currentGoldAmount += amount;
-        PlayerPrefs.SetInt("Gold", 0);
+        PlayerPrefs.SetInt("Gold", currentGoldAmount);
     }
 }

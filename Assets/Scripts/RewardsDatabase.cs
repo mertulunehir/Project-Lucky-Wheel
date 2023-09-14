@@ -12,8 +12,7 @@ public class RewardsDatabase : MonoBehaviour
 
     public Rewards bomb;
 
-    private const int silverRewardZoneNumber = 5;
-    private const int goldRewardZoneNumber = 30;
+
 
     public List<Rewards> GetRandomElementsForLuckyWheel(int zoneNumber)
     {
@@ -21,18 +20,10 @@ public class RewardsDatabase : MonoBehaviour
         {
             return GetRandomElements(firstTierRewards);
         }
-        else if (zoneNumber == silverRewardZoneNumber)
-        {
-            return GetRandomElements(firstTierRewards);
-        }
         else if(zoneNumber<15)
         {
             return GetRandomElements(secondTierRewards);
 
-        }
-        else if(zoneNumber == goldRewardZoneNumber)
-        {
-            return GetRandomElements(thirdTierRewards);
         }
         else
         {

@@ -33,6 +33,13 @@ public class LuckyWheel : MonoBehaviour
         ResetLuckyWheel();
     }
 
+    public void ResetLuckyWheelAfterGiveUp()
+    {
+        wheelButtonController.EnableButton();
+        wheelZoneController.ResetZoneNumber();
+        ResetLuckyWheel();
+    }
+
     private void ResetLuckyWheel()
     {
         wheelRotateController.ResetWheelRotation();

@@ -20,6 +20,10 @@ public class CollectedReward : MonoBehaviour
     {
         dataController.UpdateCollectedRewardData(amount);
     }
+    public int GetCollectedItemAmount()
+    {
+        return dataController.GetItemAmount();
+    }
 
     public ItemSO GetCollectedRewardItemSO()
     {

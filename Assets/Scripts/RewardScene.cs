@@ -40,4 +40,9 @@ public class RewardScene : MonoBehaviour
     {
         collectedRewards.GiveCollectedRewards();
     }
+
+    public void ClearCollectedRewards()
+    {
+        collectedRewards.ClearCollectedRewards();
+    }
 }

@@ -14,6 +14,11 @@ public class LuckyWheelZoneController : MonoBehaviour
     {
         SetZoneInfoText();
     }
+    public void ResetZoneNumber()
+    {
+        currentZoneNumber = 1;
+        SetZoneInfoText();
+    }
 
     public void UpdateZoneNumber()
     {

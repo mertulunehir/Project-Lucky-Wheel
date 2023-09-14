@@ -15,21 +15,41 @@ public class LuckyWheelDataController : MonoBehaviour
     private int currentChosenRewardAmount;
     private int currentChosenRewardIndex;
 
+    private const int silverRewardZoneNumber = 5;
+    private const int goldRewardZoneNumber = 30;
+
     public void GetWheelData(int zoneNumber)
     {
         currentRewards = rewardsDatabase.GetRandomElementsForLuckyWheel(zoneNumber);
 
-        //TODO : Test
-        for (int i = 0; i < currentRewards.Count; i++)
-            currentRewards[i] = rewardsDatabase.bomb;
 
-        currentRewards[Random.Range(0, currentRewards.Count)] = rewardsDatabase.bomb;
+        if (zoneNumber < silverRewardZoneNumber)
+        {
+            currentRewards[Random.Range(0, currentRewards.Count)] = rewardsDatabase.bomb;
+
+        }
+        else if (zoneNumber == silverRewardZoneNumber)
+        {
+
+        }
+        else if (zoneNumber < goldRewardZoneNumber)
+        {
+            currentRewards[Random.Range(0, currentRewards.Count)] = rewardsDatabase.bomb;
+        }
+        else if (zoneNumber == goldRewardZoneNumber)
+        {
+
+        }
+        else
+        {
+            currentRewards[Random.Range(0, currentRewards.Count)] = rewardsDatabase.bomb;
+        }
     }
 
     public void SetWheelElementData()
     {
         currentChosenRewardIndex = Random.Range(0, currentRewards.Count);
-        for(int i = 0;i<currentWheelElements.Count;i++)
+        for (int i = 0; i < currentWheelElements.Count; i++)
         {
             int randomRewardAmount = Random.Range(currentRewards[i].minRewardAmount, currentRewards[i].maxRewardAmount);
             currentWheelElements[i].SetWheelElementData(currentRewards[i].itemSO, randomRewardAmount);
@@ -39,6 +59,7 @@ public class LuckyWheelDataController : MonoBehaviour
         }
 
         currentChosenReward = currentRewards[currentChosenRewardIndex];
+
     }
 
     public void ChooseRewardAfterButtonClick()
