@@ -18,12 +18,12 @@ public class RewardSceneButtonController : MonoBehaviour
 
     private void OnReviveButtonClicked()
     {
-
+        sceneManager.OpenLuckyWheelSceneContinue();
     }
 
     private void OnContinueButtonClicked()
     {
-
+        sceneManager.OpenLuckyWheelSceneContinue();
     }
 
     public void RewardCollectedButtonConfig()
@@ -38,6 +38,7 @@ public class RewardSceneButtonController : MonoBehaviour
         //TODO : if give up button clicked give no reward restart all currentRewards
         //TODO : if revive buttonClicked give no reward but act like continue button
         //TODO : check if revive button price is lower than current gold amount
+
         giveUpButton.gameObject.SetActive(true);
         continueButton.gameObject.SetActive(false);
         reviveButton.gameObject.SetActive(true);

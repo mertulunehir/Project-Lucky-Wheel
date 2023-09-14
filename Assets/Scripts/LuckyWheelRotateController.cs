@@ -18,6 +18,10 @@ public class LuckyWheelRotateController : MonoBehaviour
     {
         luckyWheel = GetComponent<LuckyWheel>();
     }
+    public void ResetWheelRotation()
+    {
+        wheelRotateParent.transform.eulerAngles = Vector3.zero;
+    }
 
     public void SetCurrentRewardIndex(int index)
     {

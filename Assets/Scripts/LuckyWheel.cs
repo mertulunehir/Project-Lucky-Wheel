@@ -8,6 +8,7 @@ public class LuckyWheel : MonoBehaviour
     private LuckyWheelDataController wheelDataController;
     private LuckyWheelRotateController wheelRotateController;
     private LuckyWheelZoneController wheelZoneController;
+    private LuckyWheelButtonController wheelButtonController;
 
     [Inject] private SceneChangeManager sceneManager;
 
@@ -16,13 +17,29 @@ public class LuckyWheel : MonoBehaviour
         wheelDataController = GetComponent<LuckyWheelDataController>();
         wheelRotateController = GetComponent<LuckyWheelRotateController>();
         wheelZoneController = GetComponent<LuckyWheelZoneController>();
+        wheelButtonController = GetComponent<LuckyWheelButtonController>();
     }
 
     private void Start()
     {
+        ResetLuckyWheel();
+    }
+
+
+    public void ResetLuckyWheelAfterContinueButton()
+    {
+        wheelButtonController.EnableButton();
+        wheelZoneController.UpdateZoneNumber();
+        ResetLuckyWheel();
+    }
+
+    private void ResetLuckyWheel()
+    {
+        wheelRotateController.ResetWheelRotation();
         wheelDataController.GetWheelData(wheelZoneController.GetZoneNumber());
         wheelDataController.SetWheelElementData();
     }
+
 
     public void ChooseRewardAfterButtonClick()
     {
@@ -34,7 +51,6 @@ public class LuckyWheel : MonoBehaviour
 
     public void OpenRewardSceneAfterLuckyWheel()
     {
-        Debug.Log(wheelDataController.GetCurrentRewardItemSO().itemName + " " + wheelDataController.GetCurrentRewardItemAmount());
         sceneManager.OpenRewardScene(wheelDataController.GetCurrentRewardItemSO(),wheelDataController.GetCurrentRewardItemAmount());
     }
 

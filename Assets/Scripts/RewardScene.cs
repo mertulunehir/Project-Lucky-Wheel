@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class RewardScene : MonoBehaviour
 {
     private RewardSceneDataController rewardSceneDataController;
     private RewardSceneButtonController rewardSceneButtonController;
 
+    [Inject]private CollectedRewardsPanel collectedRewards;
 
-    // Start is called before the first frame update
+
     void Start()
     {
         rewardSceneDataController = GetComponent<RewardSceneDataController>();
@@ -18,6 +20,8 @@ public class RewardScene : MonoBehaviour
     public void SetRewardSceneData(ItemSO currentRewardSO,int amount)
     {
         rewardSceneDataController.SetRewardSceneData(currentRewardSO,amount);
+
+        collectedRewards.AddCollectedReward(currentRewardSO, amount);
     }
 
     public void ButtonRewardConfig()
