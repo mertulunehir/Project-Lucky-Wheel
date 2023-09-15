@@ -4,6 +4,7 @@ Description:
 Welcome to the Lucky Wheel Game Mechanic GitHub repository! This project is designed to bring a touch of excitement and chance to your game development endeavors. The Lucky Wheel Game Mechanic is a versatile and customizable tool that allows you to integrate a thrilling spinning wheel mechanic into your games.
 
 Features:
+-
 
 Randomized Rewards: Implement a spin-the-wheel mechanic to offer players a chance to win various rewards, from in-game items to virtual currency.
 
