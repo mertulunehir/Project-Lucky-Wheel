@@ -12,4 +12,6 @@ Customizable Options: Easily configure the wheel's zone items, rewards, and prob
 Responsive Design: The mechanic is designed to work seamlessly on both desktop and mobile platforms with different screen ratios, ensuring a consistent user experience.
 
 User-Friendly: Integrate the mechanic into your game with minimal coding effort.
+--------------
+To use the Lucky Wheel Game Mechanic in your project, you'll need to integrate the Zenject Dependency Injection Framework. Zenject is a powerful and flexible framework for managing dependencies and object composition in your Unity project. It provides a seamless way to handle the injection of dependencies into your game components.
 
