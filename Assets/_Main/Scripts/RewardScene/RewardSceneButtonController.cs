@@ -8,7 +8,7 @@ public class RewardSceneButtonController : MonoBehaviour
 {
     [SerializeField]private Button giveUpButtonAfterReward, reviveButton, continueButton,giveUpButtonAfterBomb;
 
-    [Inject] private SceneChangeManager sceneManager;
+    [Inject] private PanelChangeManager panelManager;
     [Inject] private MoneyManager moneyManager;
 
     private const int reviveButtonPrice = 50;
@@ -16,24 +16,24 @@ public class RewardSceneButtonController : MonoBehaviour
     private void OnGiveUpButtonClickedAfterReward()
     {
         GetComponent<RewardScene>().GiveCollectedRewards();
-        sceneManager.OpenLuckyWheelSceneAfterGiveUp();
+        panelManager.OpenLuckyWheelSceneAfterGiveUp();
     }
 
     private void OnGiveUpButtonClickedAfterBomb()
     {
         GetComponent<RewardScene>().ClearCollectedRewards();
-        sceneManager.OpenLuckyWheelSceneAfterGiveUp();
+        panelManager.OpenLuckyWheelSceneAfterGiveUp();
     }
 
     private void OnReviveButtonClicked()
     {
-        sceneManager.OpenLuckyWheelSceneAfterReward();
         moneyManager.BuyWithGold(reviveButtonPrice);
+        panelManager.OpenLuckyWheelSceneAfterReward();
     }
 
     private void OnContinueButtonClicked()
     {
-        sceneManager.OpenLuckyWheelSceneAfterReward();
+        panelManager.OpenLuckyWheelSceneAfterReward();
     }
 
     public void RewardCollectedButtonConfig()

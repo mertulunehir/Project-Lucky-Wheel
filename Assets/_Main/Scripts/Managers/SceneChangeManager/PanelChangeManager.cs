@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SceneChangeManager : MonoBehaviour
+public class PanelChangeManager : MonoBehaviour
 {
     public Transform rewardSceneParent, luckyWheelSceneParent;
 

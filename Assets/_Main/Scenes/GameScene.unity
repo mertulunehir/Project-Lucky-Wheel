@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 30139315}
   - component: {fileID: 30139316}
   m_Layer: 0
-  m_Name: SceneChangeManager
+  m_Name: PanelChangeManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1722,7 +1722,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rewardsDatabase: {fileID: 1257105094}
-  sceneManager: {fileID: 30139316}
+  panelManager: {fileID: 30139316}
   collectedRewardsPanel: {fileID: 332382821}
   moneyManager: {fileID: 276053070}
 --- !u!1 &463595142

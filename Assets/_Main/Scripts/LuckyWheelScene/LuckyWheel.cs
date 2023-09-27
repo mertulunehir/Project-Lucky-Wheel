@@ -10,7 +10,7 @@ public class LuckyWheel : MonoBehaviour
     private LuckyWheelZoneController wheelZoneController;
     private LuckyWheelButtonController wheelButtonController;
 
-    [Inject] private SceneChangeManager sceneManager;
+    [Inject] private PanelChangeManager panelManager;
 
     void Awake()
     {
@@ -57,7 +57,7 @@ public class LuckyWheel : MonoBehaviour
 
     public void OpenRewardSceneAfterLuckyWheel()
     {
-        sceneManager.OpenRewardScene(wheelDataController.GetCurrentRewardItemSO(),wheelDataController.GetCurrentRewardItemAmount());
+        panelManager.OpenRewardScene(wheelDataController.GetCurrentRewardItemSO(),wheelDataController.GetCurrentRewardItemAmount());
     }
 
 }
