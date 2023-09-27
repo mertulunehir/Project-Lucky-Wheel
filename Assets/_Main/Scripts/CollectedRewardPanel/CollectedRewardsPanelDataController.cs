@@ -27,7 +27,7 @@ public class CollectedRewardsPanelDataController : MonoBehaviour
         }
         else
         {
-            if (collectedItemSO.itemName.Equals("Bomb"))
+            if (collectedItemSO.IsItemBomb())
             {
                 //TODO: New features might be added here
             }
@@ -46,11 +46,11 @@ public class CollectedRewardsPanelDataController : MonoBehaviour
         //TODO : Normally all collected rewards will be given to the player but right now only gold and coin gived to player
         foreach(CollectedReward reward in collectedRewardList)
         {
-            if(reward.GetCollectedRewardItemSO().itemName.Equals("Gold"))
+            if(reward.GetCollectedRewardItemSO().IsItemGold())
             {
                 moneyManager.UpdateGold(reward.GetCollectedItemAmount());
             }
-            else if(reward.GetCollectedRewardItemSO().itemName.Equals("Cash"))
+            else if(reward.GetCollectedRewardItemSO().IsItemCash())
             {
                 moneyManager.UpdateCash(reward.GetCollectedItemAmount());
             }

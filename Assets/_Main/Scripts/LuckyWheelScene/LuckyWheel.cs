@@ -57,7 +57,7 @@ public class LuckyWheel : MonoBehaviour
 
     public void OpenRewardSceneAfterLuckyWheel()
     {
-        panelManager.OpenRewardScene(wheelDataController.GetCurrentRewardItemSO(),wheelDataController.GetCurrentRewardItemAmount());
+        panelManager.OpenRewardPanel(wheelDataController.GetCurrentRewardItemSO(),wheelDataController.GetCurrentRewardItemAmount());
     }
 
 }

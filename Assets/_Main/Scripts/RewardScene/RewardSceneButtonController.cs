@@ -16,24 +16,24 @@ public class RewardSceneButtonController : MonoBehaviour
     private void OnGiveUpButtonClickedAfterReward()
     {
         GetComponent<RewardScene>().GiveCollectedRewards();
-        panelManager.OpenLuckyWheelSceneAfterGiveUp();
+        panelManager.OpenLuckyWheelPanelAfterGiveUp();
     }
 
     private void OnGiveUpButtonClickedAfterBomb()
     {
         GetComponent<RewardScene>().ClearCollectedRewards();
-        panelManager.OpenLuckyWheelSceneAfterGiveUp();
+        panelManager.OpenLuckyWheelPanelAfterGiveUp();
     }
 
     private void OnReviveButtonClicked()
     {
         moneyManager.BuyWithGold(reviveButtonPrice);
-        panelManager.OpenLuckyWheelSceneAfterReward();
+        panelManager.OpenLuckyWheelPanelAfterReward();
     }
 
     private void OnContinueButtonClicked()
     {
-        panelManager.OpenLuckyWheelSceneAfterReward();
+        panelManager.OpenLuckyWheelPanelAfterReward();
     }
 
     public void RewardCollectedButtonConfig()

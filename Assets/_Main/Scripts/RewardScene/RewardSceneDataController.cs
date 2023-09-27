@@ -25,7 +25,7 @@ public class RewardSceneDataController : MonoBehaviour
         rewardIcon.sprite = currentRewardSO.itemIcon;
         rewardAmount.text = "x"+amount.ToString();
 
-        if(currentRewardSO.itemName.Equals("Bomb"))
+        if(currentRewardSO.IsItemBomb())
         {
             rewardSceneInfoText.text = "You Failed!";
             rewardScene.ButtonBombConfig();
