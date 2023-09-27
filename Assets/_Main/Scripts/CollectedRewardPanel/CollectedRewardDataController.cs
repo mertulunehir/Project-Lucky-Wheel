@@ -4,35 +4,39 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class CollectedRewardDataController : MonoBehaviour
+namespace LWheel.CollectedRewardsNameSpace
 {
-    public Image collectedRewardImage;
-    public TMP_Text collectedRewardAmount;
 
-    private ItemSO currentColletedItemSO;
-    private int currentCollectedItemAmount = 0;
-
-    public void SetCollectedRewardData(ItemSO collectedItem,int amount)
+    public class CollectedRewardDataController : MonoBehaviour
     {
-        currentColletedItemSO = collectedItem;
-        currentCollectedItemAmount = amount;
-        collectedRewardImage.sprite = currentColletedItemSO.itemIcon;
-        collectedRewardAmount.text = currentCollectedItemAmount.ToString();
-    }
+        public Image collectedRewardImage;
+        public TMP_Text collectedRewardAmount;
 
-    public void UpdateCollectedRewardData(int amount)
-    {
-        currentCollectedItemAmount += amount;
-        collectedRewardAmount.text = currentCollectedItemAmount.ToString();
-    }
+        private ItemSO currentColletedItemSO;
+        private int currentCollectedItemAmount = 0;
 
-    public ItemSO GetItemSO()
-    {
-        return currentColletedItemSO;
-    }
+        public void SetCollectedRewardData(ItemSO collectedItem, int amount)
+        {
+            currentColletedItemSO = collectedItem;
+            currentCollectedItemAmount = amount;
+            collectedRewardImage.sprite = currentColletedItemSO.itemIcon;
+            collectedRewardAmount.text = currentCollectedItemAmount.ToString();
+        }
 
-    public int GetItemAmount()
-    {
-        return currentCollectedItemAmount;
+        public void UpdateCollectedRewardData(int amount)
+        {
+            currentCollectedItemAmount += amount;
+            collectedRewardAmount.text = currentCollectedItemAmount.ToString();
+        }
+
+        public ItemSO GetItemSO()
+        {
+            return currentColletedItemSO;
+        }
+
+        public int GetItemAmount()
+        {
+            return currentCollectedItemAmount;
+        }
     }
 }

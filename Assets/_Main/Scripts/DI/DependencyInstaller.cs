@@ -1,3 +1,7 @@
+using LWheel.CollectedRewardsNameSpace;
+using LWheel.MoneyManagerNameSpace;
+using LWheel.PanelChangeNameSpace;
+using LWheel.RewardDatabase;
 using UnityEngine;
 using Zenject;
 

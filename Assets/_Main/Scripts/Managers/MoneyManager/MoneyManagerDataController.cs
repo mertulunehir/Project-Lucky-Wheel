@@ -3,55 +3,59 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoneyManagerDataController : MonoBehaviour
+namespace LWheel.MoneyManagerNameSpace
 {
-    private int currentGoldAmount,currentCashAmount;
 
-    private void Awake()
+    public class MoneyManagerDataController : MonoBehaviour
     {
-        CheckForSaveData();
-    }
+        private int currentGoldAmount, currentCashAmount;
 
-    private void CheckForSaveData()
-    {
-        if(PlayerPrefs.HasKey("Cash"))
+        private void Awake()
         {
-            currentCashAmount = PlayerPrefs.GetInt("Cash");
-        }
-        else
-        {
-            PlayerPrefs.SetInt("Cash",0);
-            currentCashAmount = PlayerPrefs.GetInt("Cash");
+            CheckForSaveData();
         }
 
-        if (PlayerPrefs.HasKey("Gold"))
+        private void CheckForSaveData()
         {
-            currentGoldAmount = PlayerPrefs.GetInt("Gold");
+            if (PlayerPrefs.HasKey("Cash"))
+            {
+                currentCashAmount = PlayerPrefs.GetInt("Cash");
+            }
+            else
+            {
+                PlayerPrefs.SetInt("Cash", 0);
+                currentCashAmount = PlayerPrefs.GetInt("Cash");
+            }
+
+            if (PlayerPrefs.HasKey("Gold"))
+            {
+                currentGoldAmount = PlayerPrefs.GetInt("Gold");
+            }
+            else
+            {
+                PlayerPrefs.SetInt("Gold", 0);
+                currentGoldAmount = PlayerPrefs.GetInt("Gold");
+            }
         }
-        else
+
+        public void UpdateCashAmount(int amount)
         {
-            PlayerPrefs.SetInt("Gold", 0);
-            currentGoldAmount = PlayerPrefs.GetInt("Gold");
+            currentCashAmount += amount;
+            PlayerPrefs.SetInt("Cash", currentCashAmount);
         }
-    }
 
-    public void UpdateCashAmount(int amount)
-    {
-        currentCashAmount += amount;
-        PlayerPrefs.SetInt("Cash", currentCashAmount);
-    }
-
-    public int GetCashAmount()
-    {
-        return currentCashAmount;
-    }
-    public int GetGoldAmount()
-    {
-        return currentGoldAmount;
-    }
-    public void UpdateGoldAmount(int amount)
-    {
-        currentGoldAmount += amount;
-        PlayerPrefs.SetInt("Gold", currentGoldAmount);
+        public int GetCashAmount()
+        {
+            return currentCashAmount;
+        }
+        public int GetGoldAmount()
+        {
+            return currentGoldAmount;
+        }
+        public void UpdateGoldAmount(int amount)
+        {
+            currentGoldAmount += amount;
+            PlayerPrefs.SetInt("Gold", currentGoldAmount);
+        }
     }
 }

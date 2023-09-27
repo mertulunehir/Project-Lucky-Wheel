@@ -4,21 +4,25 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WheelElementController : MonoBehaviour
+namespace LWheel.LuckyWheelNameSpace
 {
-    [SerializeField] private Image rewardIcon;
-    [SerializeField] private TMP_Text rewardAmountText;
 
-    public void SetWheelElementData(ItemSO currentItemSO, int rewardAmount)
+    public class WheelElementController : MonoBehaviour
     {
-        rewardAmountText.text = rewardAmount.ToString();
-        rewardIcon.sprite = currentItemSO.itemIcon;
+        [SerializeField] private Image rewardIcon;
+        [SerializeField] private TMP_Text rewardAmountText;
 
-        if (currentItemSO.IsItemBomb())
-            rewardAmountText.gameObject.SetActive(false);
-        else
-            rewardAmountText.gameObject.SetActive(true);
+        public void SetWheelElementData(ItemSO currentItemSO, int rewardAmount)
+        {
+            rewardAmountText.text = rewardAmount.ToString();
+            rewardIcon.sprite = currentItemSO.itemIcon;
+
+            if (currentItemSO.IsItemBomb())
+                rewardAmountText.gameObject.SetActive(false);
+            else
+                rewardAmountText.gameObject.SetActive(true);
+
+        }
 
     }
-
 }

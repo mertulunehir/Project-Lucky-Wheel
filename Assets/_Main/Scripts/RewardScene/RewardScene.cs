@@ -1,47 +1,51 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using LWheel.CollectedRewardsNameSpace;
 using UnityEngine;
 using Zenject;
 
-public class RewardScene : MonoBehaviour
+namespace LWheel.RewardSceneNamespace
 {
-    private RewardSceneDataController rewardSceneDataController;
-    private RewardSceneButtonController rewardSceneButtonController;
-
-    [Inject]private CollectedRewardsPanel collectedRewards;
-
-    void Start()
+    public class RewardScene : MonoBehaviour
     {
-        rewardSceneDataController = GetComponent<RewardSceneDataController>();
-        rewardSceneButtonController = GetComponent<RewardSceneButtonController>();
-    }
+        private RewardSceneDataController rewardSceneDataController;
+        private RewardSceneButtonController rewardSceneButtonController;
 
-    public void SetRewardSceneData(ItemSO currentRewardSO,int amount)
-    {
-        rewardSceneDataController.SetRewardSceneData(currentRewardSO,amount);
+        [Inject] private CollectedRewardsPanel collectedRewards;
 
-        collectedRewards.AddCollectedReward(currentRewardSO, amount);
-    }
+        void Start()
+        {
+            rewardSceneDataController = GetComponent<RewardSceneDataController>();
+            rewardSceneButtonController = GetComponent<RewardSceneButtonController>();
+        }
 
-    public void ButtonRewardConfig()
-    {
-        rewardSceneButtonController.RewardCollectedButtonConfig();
-    }
+        public void SetRewardSceneData(ItemSO currentRewardSO, int amount)
+        {
+            rewardSceneDataController.SetRewardSceneData(currentRewardSO, amount);
 
-    public void ButtonBombConfig()
-    {
-        rewardSceneButtonController.BombCollectedButtonConfig();
+            collectedRewards.AddCollectedReward(currentRewardSO, amount);
+        }
 
-    }
+        public void ButtonRewardConfig()
+        {
+            rewardSceneButtonController.RewardCollectedButtonConfig();
+        }
 
-    public void GiveCollectedRewards()
-    {
-        collectedRewards.GiveCollectedRewards();
-    }
+        public void ButtonBombConfig()
+        {
+            rewardSceneButtonController.BombCollectedButtonConfig();
 
-    public void ClearCollectedRewards()
-    {
-        collectedRewards.ClearCollectedRewards();
+        }
+
+        public void GiveCollectedRewards()
+        {
+            collectedRewards.GiveCollectedRewards();
+        }
+
+        public void ClearCollectedRewards()
+        {
+            collectedRewards.ClearCollectedRewards();
+        }
     }
 }

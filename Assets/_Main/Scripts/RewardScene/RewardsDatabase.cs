@@ -4,52 +4,55 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = System.Random;
 
-public class RewardsDatabase : MonoBehaviour
+namespace LWheel.RewardDatabase
 {
-    public List<Rewards> firstTierRewards = new List<Rewards>();
-    public List<Rewards> secondTierRewards = new List<Rewards>();
-    public List<Rewards> thirdTierRewards = new List<Rewards>();
-
-    public Rewards bomb;
-
-    public List<Rewards> GetRandomElementsForLuckyWheel(int zoneNumber)
+    public class RewardsDatabase : MonoBehaviour
     {
-        if(zoneNumber<5)
+        public List<Rewards> firstTierRewards = new List<Rewards>();
+        public List<Rewards> secondTierRewards = new List<Rewards>();
+        public List<Rewards> thirdTierRewards = new List<Rewards>();
+
+        public Rewards bomb;
+
+        public List<Rewards> GetRandomElementsForLuckyWheel(int zoneNumber)
         {
-            return GetRandomElements(firstTierRewards);
+            if (zoneNumber < 5)
+            {
+                return GetRandomElements(firstTierRewards);
+            }
+            else if (zoneNumber < 15)
+            {
+                return GetRandomElements(secondTierRewards);
+            }
+            else
+            {
+                return GetRandomElements(thirdTierRewards);
+            }
         }
-        else if(zoneNumber<15)
+
+        private List<Rewards> GetRandomElements(List<Rewards> currentRewards)
         {
-            return GetRandomElements(secondTierRewards);
-        }
-        else
-        {
-            return GetRandomElements(thirdTierRewards);
+            Random random = new Random();
+
+            List<Rewards> randomSelection = new List<Rewards>();
+
+            for (int i = 0; i < 8; i++)
+            {
+                int randomIndex = random.Next(currentRewards.Count);
+                Rewards selectedElement = currentRewards[randomIndex];
+                randomSelection.Add(selectedElement);
+            }
+
+            return randomSelection;
+
         }
     }
 
-    private List<Rewards> GetRandomElements(List<Rewards> currentRewards)
+    [Serializable]
+    public class Rewards
     {
-        Random random = new Random();
-
-        List<Rewards> randomSelection = new List<Rewards>();
-
-        for (int i = 0; i < 8; i++)
-        {
-            int randomIndex = random.Next(currentRewards.Count); 
-            Rewards selectedElement = currentRewards[randomIndex]; 
-            randomSelection.Add(selectedElement); 
-        }
-
-        return randomSelection;
-
+        public ItemSO itemSO;
+        public int minRewardAmount;
+        public int maxRewardAmount;
     }
-}
-
-[Serializable]
-public class Rewards
-{
-    public ItemSO itemSO;
-    public int minRewardAmount;
-    public int maxRewardAmount;
 }

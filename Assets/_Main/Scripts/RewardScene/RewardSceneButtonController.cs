@@ -1,74 +1,80 @@
 using System.Collections;
 using System.Collections.Generic;
+using LWheel.MoneyManagerNameSpace;
+using LWheel.PanelChangeNameSpace;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-public class RewardSceneButtonController : MonoBehaviour
+namespace LWheel.RewardSceneNamespace
 {
-    [SerializeField]private Button giveUpButtonAfterReward, reviveButton, continueButton,giveUpButtonAfterBomb;
 
-    [Inject] private PanelChangeManager panelManager;
-    [Inject] private MoneyManager moneyManager;
-
-    private const int reviveButtonPrice = 50;
-
-    private void OnGiveUpButtonClickedAfterReward()
+    public class RewardSceneButtonController : MonoBehaviour
     {
-        GetComponent<RewardScene>().GiveCollectedRewards();
-        panelManager.OpenLuckyWheelPanelAfterGiveUp();
-    }
+        [SerializeField] private Button giveUpButtonAfterReward, reviveButton, continueButton, giveUpButtonAfterBomb;
 
-    private void OnGiveUpButtonClickedAfterBomb()
-    {
-        GetComponent<RewardScene>().ClearCollectedRewards();
-        panelManager.OpenLuckyWheelPanelAfterGiveUp();
-    }
+        [Inject] private PanelChangeManager panelManager;
+        [Inject] private MoneyManager moneyManager;
 
-    private void OnReviveButtonClicked()
-    {
-        moneyManager.BuyWithGold(reviveButtonPrice);
-        panelManager.OpenLuckyWheelPanelAfterReward();
-    }
+        private const int reviveButtonPrice = 50;
 
-    private void OnContinueButtonClicked()
-    {
-        panelManager.OpenLuckyWheelPanelAfterReward();
-    }
+        private void OnGiveUpButtonClickedAfterReward()
+        {
+            GetComponent<RewardScene>().GiveCollectedRewards();
+            panelManager.OpenLuckyWheelPanelAfterGiveUp();
+        }
 
-    public void RewardCollectedButtonConfig()
-    {
-        giveUpButtonAfterReward.gameObject.SetActive(true);
-        giveUpButtonAfterBomb.gameObject.SetActive(false);
-        continueButton.gameObject.SetActive(true);
-        reviveButton.gameObject.SetActive(false);
-    }
+        private void OnGiveUpButtonClickedAfterBomb()
+        {
+            GetComponent<RewardScene>().ClearCollectedRewards();
+            panelManager.OpenLuckyWheelPanelAfterGiveUp();
+        }
 
-    public void BombCollectedButtonConfig()
-    {
-        giveUpButtonAfterReward.gameObject.SetActive(false);
-        giveUpButtonAfterBomb.gameObject.SetActive(true);
-        continueButton.gameObject.SetActive(false);
-        reviveButton.gameObject.SetActive(true);
+        private void OnReviveButtonClicked()
+        {
+            moneyManager.BuyWithGold(reviveButtonPrice);
+            panelManager.OpenLuckyWheelPanelAfterReward();
+        }
 
-        if (moneyManager.CanAffordBuyingWithGold(reviveButtonPrice))
-            reviveButton.interactable = true;
-        else
-            reviveButton.interactable = false;
-    }
+        private void OnContinueButtonClicked()
+        {
+            panelManager.OpenLuckyWheelPanelAfterReward();
+        }
 
-    private void OnEnable()
-    {
-        giveUpButtonAfterReward.onClick.AddListener(OnGiveUpButtonClickedAfterReward);
-        giveUpButtonAfterBomb.onClick.AddListener(OnGiveUpButtonClickedAfterBomb);
-        reviveButton.onClick.AddListener(OnReviveButtonClicked);
-        continueButton.onClick.AddListener(OnContinueButtonClicked);
-    }
-    private void OnDisable()
-    {
-        giveUpButtonAfterReward.onClick.RemoveListener(OnGiveUpButtonClickedAfterReward);
-        giveUpButtonAfterBomb.onClick.RemoveListener(OnGiveUpButtonClickedAfterBomb);
-        reviveButton.onClick.RemoveListener(OnReviveButtonClicked);
-        continueButton.onClick.RemoveListener(OnContinueButtonClicked);
+        public void RewardCollectedButtonConfig()
+        {
+            giveUpButtonAfterReward.gameObject.SetActive(true);
+            giveUpButtonAfterBomb.gameObject.SetActive(false);
+            continueButton.gameObject.SetActive(true);
+            reviveButton.gameObject.SetActive(false);
+        }
+
+        public void BombCollectedButtonConfig()
+        {
+            giveUpButtonAfterReward.gameObject.SetActive(false);
+            giveUpButtonAfterBomb.gameObject.SetActive(true);
+            continueButton.gameObject.SetActive(false);
+            reviveButton.gameObject.SetActive(true);
+
+            if (moneyManager.CanAffordBuyingWithGold(reviveButtonPrice))
+                reviveButton.interactable = true;
+            else
+                reviveButton.interactable = false;
+        }
+
+        private void OnEnable()
+        {
+            giveUpButtonAfterReward.onClick.AddListener(OnGiveUpButtonClickedAfterReward);
+            giveUpButtonAfterBomb.onClick.AddListener(OnGiveUpButtonClickedAfterBomb);
+            reviveButton.onClick.AddListener(OnReviveButtonClicked);
+            continueButton.onClick.AddListener(OnContinueButtonClicked);
+        }
+        private void OnDisable()
+        {
+            giveUpButtonAfterReward.onClick.RemoveListener(OnGiveUpButtonClickedAfterReward);
+            giveUpButtonAfterBomb.onClick.RemoveListener(OnGiveUpButtonClickedAfterBomb);
+            reviveButton.onClick.RemoveListener(OnReviveButtonClicked);
+            continueButton.onClick.RemoveListener(OnContinueButtonClicked);
+        }
     }
 }

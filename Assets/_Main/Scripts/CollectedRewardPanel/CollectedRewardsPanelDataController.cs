@@ -1,74 +1,80 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using LWheel.MoneyManagerNameSpace;
 using UnityEngine;
 using Zenject;
 
-public class CollectedRewardsPanelDataController : MonoBehaviour
+namespace LWheel.CollectedRewardsNameSpace
 {
-    [SerializeField] private CollectedReward collectedRewardPrefab;
-    [SerializeField] private Transform collectedRewardPanelParent;
 
-    private List<ItemSO> collectedRewardsSOList = new List<ItemSO>();
-    private List<CollectedReward> collectedRewardList = new List<CollectedReward>();
-
-    [Inject]private MoneyManager moneyManager;
-
-    public void AddCollectedReward(ItemSO collectedItemSO, int amount)
+    public class CollectedRewardsPanelDataController : MonoBehaviour
     {
-        if (collectedRewardsSOList.Contains(collectedItemSO))
+        [SerializeField] private CollectedReward collectedRewardPrefab;
+        [SerializeField] private Transform collectedRewardPanelParent;
+
+        private List<ItemSO> collectedRewardsSOList = new List<ItemSO>();
+        private List<CollectedReward> collectedRewardList = new List<CollectedReward>();
+
+        [Inject] private MoneyManager moneyManager;
+
+        public void AddCollectedReward(ItemSO collectedItemSO, int amount)
         {
-            foreach (CollectedReward reward in collectedRewardList)
-                if (reward.GetCollectedRewardItemSO().Equals(collectedItemSO))
-                {
-                    reward.UpdateCollectedItemAmount(amount);
-                    break;
-                }
-        }
-        else
-        {
-            if (collectedItemSO.IsItemBomb())
+            if (collectedRewardsSOList.Contains(collectedItemSO))
             {
-                //TODO: New features might be added here
+                foreach (CollectedReward reward in collectedRewardList)
+                    if (reward.GetCollectedRewardItemSO().Equals(collectedItemSO))
+                    {
+                        reward.UpdateCollectedItemAmount(amount);
+                        break;
+                    }
             }
             else
             {
-                GameObject collectedReward = Instantiate(collectedRewardPrefab.gameObject, collectedRewardPanelParent);
-                collectedRewardsSOList.Add(collectedItemSO);
-                collectedReward.GetComponent<CollectedReward>().SetCollectedRewardData(collectedItemSO, amount);
-                collectedRewardList.Add(collectedReward.GetComponent<CollectedReward>());
+                if (collectedItemSO.IsItemBomb())
+                {
+                    //TODO: New features might be added here
+                }
+                else
+                {
+                    GameObject collectedReward = Instantiate(collectedRewardPrefab.gameObject, collectedRewardPanelParent);
+                    collectedRewardsSOList.Add(collectedItemSO);
+                    collectedReward.GetComponent<CollectedReward>().SetCollectedRewardData(collectedItemSO, amount);
+                    collectedRewardList.Add(collectedReward.GetComponent<CollectedReward>());
+                }
             }
         }
-    }
 
-    public void GiveCollectedRewards()
-    {
-        //TODO : Normally all collected rewards will be given to the player but right now only gold and coin gived to player
-        foreach(CollectedReward reward in collectedRewardList)
+        public void GiveCollectedRewards()
         {
-            if(reward.GetCollectedRewardItemSO().IsItemGold())
+            //TODO : Normally all collected rewards will be given to the player but right now only gold and coin gived to player
+            foreach (CollectedReward reward in collectedRewardList)
             {
-                moneyManager.UpdateGold(reward.GetCollectedItemAmount());
+                if (reward.GetCollectedRewardItemSO().IsItemGold())
+                {
+                    moneyManager.UpdateGold(reward.GetCollectedItemAmount());
+                }
+                else if (reward.GetCollectedRewardItemSO().IsItemCash())
+                {
+                    moneyManager.UpdateCash(reward.GetCollectedItemAmount());
+                }
             }
-            else if(reward.GetCollectedRewardItemSO().IsItemCash())
-            {
-                moneyManager.UpdateCash(reward.GetCollectedItemAmount());
-            }
+
+            foreach (Transform currentReward in collectedRewardPanelParent)
+                Destroy(currentReward.gameObject);
+
+            collectedRewardsSOList.Clear();
+            collectedRewardList.Clear();
         }
 
-        foreach (Transform currentReward in collectedRewardPanelParent)
-            Destroy(currentReward.gameObject);
+        public void ClearCollectedReward()
+        {
+            foreach (Transform currentReward in collectedRewardPanelParent)
+                Destroy(currentReward.gameObject);
 
-        collectedRewardsSOList.Clear();
-        collectedRewardList.Clear();
-    }
-
-    public void ClearCollectedReward()
-    {
-        foreach (Transform currentReward in collectedRewardPanelParent)
-            Destroy(currentReward.gameObject);
-
-        collectedRewardsSOList.Clear();
-        collectedRewardList.Clear();
+            collectedRewardsSOList.Clear();
+            collectedRewardList.Clear();
+        }
     }
 }
+

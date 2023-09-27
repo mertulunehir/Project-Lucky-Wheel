@@ -3,39 +3,43 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LuckyWheelButtonController : MonoBehaviour
+namespace LWheel.LuckyWheelNameSpace
 {
-    [SerializeField] private Button rotateButton;
 
-    private bool canPressButton;
-    private LuckyWheel luckyWheel;
+    public class LuckyWheelButtonController : MonoBehaviour
+    {
+        [SerializeField] private Button rotateButton;
 
-    private void Start()
-    {
-        luckyWheel = GetComponent<LuckyWheel>();
-        canPressButton = true;
-    }
-    private void OnRotateButtonPressed()
-    {
-        if (canPressButton)
+        private bool canPressButton;
+        private LuckyWheel luckyWheel;
+
+        private void Start()
         {
-            canPressButton = false;
-            luckyWheel.ChooseRewardAfterButtonClick();
+            luckyWheel = GetComponent<LuckyWheel>();
+            canPressButton = true;
         }
-    }
+        private void OnRotateButtonPressed()
+        {
+            if (canPressButton)
+            {
+                canPressButton = false;
+                luckyWheel.ChooseRewardAfterButtonClick();
+            }
+        }
 
-    public void EnableButton()
-    {
-        canPressButton = true;
-    }
+        public void EnableButton()
+        {
+            canPressButton = true;
+        }
 
-    private void OnEnable()
-    {
-        rotateButton.onClick.AddListener(OnRotateButtonPressed);
-    }
+        private void OnEnable()
+        {
+            rotateButton.onClick.AddListener(OnRotateButtonPressed);
+        }
 
-    private void OnDisable()
-    {
-        rotateButton.onClick.RemoveListener(OnRotateButtonPressed);
+        private void OnDisable()
+        {
+            rotateButton.onClick.RemoveListener(OnRotateButtonPressed);
+        }
     }
 }
