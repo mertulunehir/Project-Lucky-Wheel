@@ -16,7 +16,19 @@ namespace LWheel.MoneyManagerNameSpace
         }
         public void UpdateCashText(int currentCashAmount, int collectedAmount)
         {
-            DOTween.To(() => currentCashAmount, x => currentCashAmount = x, currentCashAmount + collectedAmount, 1).OnUpdate(() => cashText.text = currentCashAmount.ToString());
+            float GetCashAmount()
+            {
+                return currentCashAmount;
+            }
+
+            void UpdateCashText(float value)
+            {
+                currentCashAmount = (int)value;
+                cashText.text = currentCashAmount.ToString();
+            }
+
+            float targetCashAmount = currentCashAmount + collectedAmount;
+            var tweener = DOTween.To(GetCashAmount, UpdateCashText, targetCashAmount, 1f);
         }
 
         public void UpdateGoldText(int currentGoldAmount)
@@ -26,8 +38,21 @@ namespace LWheel.MoneyManagerNameSpace
 
         public void UpdateGoldText(int currentGoldAmount, int collectedAmount)
         {
-            DOTween.To(() => currentGoldAmount, x => currentGoldAmount = x, currentGoldAmount + collectedAmount, 1).OnUpdate(() => goldText.text = currentGoldAmount.ToString());
+            float GetGoldAmont()
+            {
+                return currentGoldAmount;
+            }
+
+            void UpdateGoldText(float value)
+            {
+                currentGoldAmount = (int)value;
+                goldText.text = currentGoldAmount.ToString();
+            }
+
+            float targetCashAmount = currentGoldAmount + collectedAmount;
+            var tweener = DOTween.To(GetGoldAmont, UpdateGoldText, targetCashAmount, 1f);
         }
+
     }
 
 }

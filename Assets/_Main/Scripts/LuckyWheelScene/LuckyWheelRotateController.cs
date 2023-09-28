@@ -35,7 +35,12 @@ namespace LWheel.LuckyWheelNameSpace
         {
             int offset = 45 * currentRewardIndex;
             wheelRotateParent.DOLocalRotate(new Vector3(0, 0, baseRotateCount * 360 + offset), rotateTime, RotateMode.LocalAxisAdd).SetEase(customRotateEase);
-            DOVirtual.DelayedCall(rotateTime + 1f, () => luckyWheel.OpenRewardSceneAfterLuckyWheel());
+            DOVirtual.DelayedCall(rotateTime + 1f, OpenRewardScene);
+        }
+
+        private void OpenRewardScene()
+        {
+            luckyWheel.OpenRewardSceneAfterLuckyWheel();
         }
     }
 
