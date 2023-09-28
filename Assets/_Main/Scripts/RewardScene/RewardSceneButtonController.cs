@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using LWheel.MoneyManagerNameSpace;
@@ -5,6 +6,7 @@ using LWheel.PanelChangeNameSpace;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
+using TMPro;
 
 namespace LWheel.RewardSceneNamespace
 {
@@ -13,10 +15,12 @@ namespace LWheel.RewardSceneNamespace
     {
         [SerializeField] private Button giveUpButtonAfterReward, reviveButton, continueButton, giveUpButtonAfterBomb;
 
+        [SerializeField] TMP_Text buttonCostText;
+
         [Inject] private PanelChangeManager panelManager;
         [Inject] private MoneyManager moneyManager;
 
-        private const int reviveButtonPrice = 50;
+        private int reviveButtonPrice;
 
         private void OnGiveUpButtonClickedAfterReward()
         {
@@ -75,6 +79,12 @@ namespace LWheel.RewardSceneNamespace
             giveUpButtonAfterBomb.onClick.RemoveListener(OnGiveUpButtonClickedAfterBomb);
             reviveButton.onClick.RemoveListener(OnReviveButtonClicked);
             continueButton.onClick.RemoveListener(OnContinueButtonClicked);
+        }
+
+        public void SetDataFromSO(RewardPanelSO panelSO)
+        {
+            reviveButtonPrice = panelSO.reviveButtonPrice;
+            buttonCostText.text = reviveButtonPrice.ToString();
         }
     }
 }

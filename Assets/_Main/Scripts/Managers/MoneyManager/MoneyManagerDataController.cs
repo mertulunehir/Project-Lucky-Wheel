@@ -10,38 +10,47 @@ namespace LWheel.MoneyManagerNameSpace
     {
         private int currentGoldAmount, currentCashAmount;
 
-        private void Awake()
+        private string cashSaveKey;
+        private string goldSaveKey;
+
+        private void Start()
         {
             CheckForSaveData();
         }
 
+        public void SetDataFromSO(MoneyManagerSO moneyManagerSO)
+        {
+            cashSaveKey = moneyManagerSO.cashSaveKey;
+            goldSaveKey = moneyManagerSO.goldSaveKey;
+        }
+
         private void CheckForSaveData()
         {
-            if (PlayerPrefs.HasKey("Cash"))
+            if (PlayerPrefs.HasKey(cashSaveKey))
             {
-                currentCashAmount = PlayerPrefs.GetInt("Cash");
+                currentCashAmount = PlayerPrefs.GetInt(cashSaveKey);
             }
             else
             {
-                PlayerPrefs.SetInt("Cash", 0);
-                currentCashAmount = PlayerPrefs.GetInt("Cash");
+                PlayerPrefs.SetInt(cashSaveKey, 0);
+                currentCashAmount = PlayerPrefs.GetInt(cashSaveKey);
             }
 
-            if (PlayerPrefs.HasKey("Gold"))
+            if (PlayerPrefs.HasKey(goldSaveKey))
             {
-                currentGoldAmount = PlayerPrefs.GetInt("Gold");
+                currentGoldAmount = PlayerPrefs.GetInt(goldSaveKey);
             }
             else
             {
-                PlayerPrefs.SetInt("Gold", 0);
-                currentGoldAmount = PlayerPrefs.GetInt("Gold");
+                PlayerPrefs.SetInt(goldSaveKey, 0);
+                currentGoldAmount = PlayerPrefs.GetInt(goldSaveKey);
             }
         }
 
         public void UpdateCashAmount(int amount)
         {
             currentCashAmount += amount;
-            PlayerPrefs.SetInt("Cash", currentCashAmount);
+            PlayerPrefs.SetInt(cashSaveKey, currentCashAmount);
         }
 
         public int GetCashAmount()
@@ -55,7 +64,7 @@ namespace LWheel.MoneyManagerNameSpace
         public void UpdateGoldAmount(int amount)
         {
             currentGoldAmount += amount;
-            PlayerPrefs.SetInt("Gold", currentGoldAmount);
+            PlayerPrefs.SetInt(goldSaveKey, currentGoldAmount);
         }
     }
 }

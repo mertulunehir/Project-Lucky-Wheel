@@ -6,14 +6,20 @@ namespace LWheel.MoneyManagerNameSpace
 {
     public class MoneyManager : MonoBehaviour
     {
+        [SerializeField] private MoneyManagerSO moneyManagerSO;
         private MoneyManagerCanvasController canvasController;
         private MoneyManagerDataController dataController;
 
-        private void Start()
+        private void Awake()
         {
             canvasController = GetComponent<MoneyManagerCanvasController>();
             dataController = GetComponent<MoneyManagerDataController>();
 
+            dataController.SetDataFromSO(moneyManagerSO);
+        }
+
+        private void Start()
+        {
             canvasController.UpdateCashText(dataController.GetCashAmount());
             canvasController.UpdateGoldText(dataController.GetGoldAmount());
         }

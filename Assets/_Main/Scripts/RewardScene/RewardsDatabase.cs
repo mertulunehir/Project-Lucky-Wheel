@@ -8,19 +8,41 @@ namespace LWheel.RewardDatabase
 {
     public class RewardsDatabase : MonoBehaviour
     {
-        public List<Rewards> firstTierRewards = new List<Rewards>();
-        public List<Rewards> secondTierRewards = new List<Rewards>();
-        public List<Rewards> thirdTierRewards = new List<Rewards>();
+        [SerializeField] private RewardsDatabaseSO databaseSO;
 
-        public Rewards bomb;
+        private List<Rewards> firstTierRewards = new List<Rewards>();
+        private List<Rewards> secondTierRewards = new List<Rewards>();
+        private List<Rewards> thirdTierRewards = new List<Rewards>();
+
+        private int secondTierStartZone;
+        private int thirdTierStartZone;
+
+        private Rewards bomb;
+
+        private void Awake()
+        {
+            SetDataFromSO();
+        }
+
+        private void SetDataFromSO()
+        {
+            firstTierRewards = databaseSO.firstTierRewards;
+            secondTierRewards = databaseSO.secondTierRewards;
+            thirdTierRewards = databaseSO.thirdTierRewards;
+
+            secondTierStartZone = databaseSO.secondTierStartZone;
+            thirdTierStartZone = databaseSO.thirdTierStartZone;
+
+            bomb = databaseSO.bomb;
+        }
 
         public List<Rewards> GetRandomElementsForLuckyWheel(int zoneNumber)
         {
-            if (zoneNumber < 5)
+            if (zoneNumber < secondTierStartZone)
             {
                 return GetRandomElements(firstTierRewards);
             }
-            else if (zoneNumber < 15)
+            else if (zoneNumber < thirdTierStartZone)
             {
                 return GetRandomElements(secondTierRewards);
             }
@@ -45,6 +67,11 @@ namespace LWheel.RewardDatabase
 
             return randomSelection;
 
+        }
+
+        public Rewards GetBombReward()
+        {
+            return bomb;
         }
     }
 

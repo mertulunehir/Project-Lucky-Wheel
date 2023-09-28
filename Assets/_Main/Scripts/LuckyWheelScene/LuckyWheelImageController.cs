@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using LWheel.RewardDatabase;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,16 +26,44 @@ namespace LWheel.LuckyWheelNameSpace
 
         public void SetLuckyWheelImage(int zoneNumber)
         {
-            if (zoneNumber < silverLuckyWheelRatio)
+            //if (zoneNumber < silverLuckyWheelRatio)
+            //{
+            //    if (!currentZone.Equals(LuckyWheelZones.Bronze))
+            //    {
+            //        currentZone = LuckyWheelZones.Bronze;
+            //        luckyWheelImage.sprite = bronzeLuckyWheelSprite;
+            //        indicatorImage.sprite = bronzeLuckyWheelIndicator;
+            //    }
+            //}
+            //else if (zoneNumber < goldLuckyWheelRatio)
+            //{
+            //    if (!currentZone.Equals(LuckyWheelZones.Silver))
+            //    {
+            //        currentZone = LuckyWheelZones.Silver;
+            //        luckyWheelImage.sprite = silverLuckyWheelSprite;
+            //        indicatorImage.sprite = silverLuckyWheelIndicator;
+            //    }
+            //}
+            //else if (zoneNumber >= goldLuckyWheelRatio)
+            //{
+            //    if (!currentZone.Equals(LuckyWheelZones.Gold))
+            //    {
+            //        currentZone = LuckyWheelZones.Gold;
+            //        luckyWheelImage.sprite = goldLuckyWheelSprite;
+            //        indicatorImage.sprite = goldLuckyWheelIndicator;
+            //    }
+            //}
+
+            if(zoneNumber % goldLuckyWheelRatio == 0)
             {
-                if (!currentZone.Equals(LuckyWheelZones.Bronze))
+                if (!currentZone.Equals(LuckyWheelZones.Gold))
                 {
-                    currentZone = LuckyWheelZones.Bronze;
-                    luckyWheelImage.sprite = bronzeLuckyWheelSprite;
-                    indicatorImage.sprite = bronzeLuckyWheelIndicator;
+                    currentZone = LuckyWheelZones.Gold;
+                    luckyWheelImage.sprite = goldLuckyWheelSprite;
+                    indicatorImage.sprite = goldLuckyWheelIndicator;
                 }
             }
-            else if (zoneNumber < goldLuckyWheelRatio)
+            else if (zoneNumber % silverLuckyWheelRatio == 0 )
             {
                 if (!currentZone.Equals(LuckyWheelZones.Silver))
                 {
@@ -43,13 +72,13 @@ namespace LWheel.LuckyWheelNameSpace
                     indicatorImage.sprite = silverLuckyWheelIndicator;
                 }
             }
-            else if (zoneNumber >= goldLuckyWheelRatio)
+            else
             {
-                if (!currentZone.Equals(LuckyWheelZones.Gold))
+                if (!currentZone.Equals(LuckyWheelZones.Bronze))
                 {
-                    currentZone = LuckyWheelZones.Gold;
-                    luckyWheelImage.sprite = goldLuckyWheelSprite;
-                    indicatorImage.sprite = goldLuckyWheelIndicator;
+                    currentZone = LuckyWheelZones.Bronze;
+                    luckyWheelImage.sprite = bronzeLuckyWheelSprite;
+                    indicatorImage.sprite = bronzeLuckyWheelIndicator;
                 }
             }
         }

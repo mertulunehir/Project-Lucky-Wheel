@@ -38,7 +38,7 @@ namespace LWheel.LuckyWheelNameSpace
             }
             else
             {
-                currentRewards[Random.Range(0, currentRewards.Count)] = rewardsDatabase.bomb;
+                currentRewards[Random.Range(0, currentRewards.Count)] = rewardsDatabase.GetBombReward() ;
             }
         }
 

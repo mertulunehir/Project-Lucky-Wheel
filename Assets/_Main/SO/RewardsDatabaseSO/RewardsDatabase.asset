@@ -1,0 +1,170 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c65e622ba6704415c868bf937226edd4, type: 3}
+  m_Name: RewardsDatabase
+  m_EditorClassIdentifier: 
+  firstTierRewards:
+  - itemSO: {fileID: 11400000, guid: 8c207c38179ee4b528854aa334abffc7, type: 2}
+    minRewardAmount: 5
+    maxRewardAmount: 10
+  - itemSO: {fileID: 11400000, guid: b625fc4d49d394c7c82985ee31daf2c6, type: 2}
+    minRewardAmount: 5
+    maxRewardAmount: 10
+  - itemSO: {fileID: 11400000, guid: 398311de03e1b4ce59ed421149f6dee3, type: 2}
+    minRewardAmount: 1
+    maxRewardAmount: 1
+  - itemSO: {fileID: 11400000, guid: 0cdfd118985264a2b9fbd5ada25ef21a, type: 2}
+    minRewardAmount: 1
+    maxRewardAmount: 1
+  - itemSO: {fileID: 11400000, guid: c7beb8c01955a4eaa85b9637eedb07ef, type: 2}
+    minRewardAmount: 1
+    maxRewardAmount: 1
+  - itemSO: {fileID: 11400000, guid: 0fdd773ee3c64479bb3302c933e4dfdd, type: 2}
+    minRewardAmount: 1
+    maxRewardAmount: 1
+  - itemSO: {fileID: 11400000, guid: 21d7793e3984b474eaffc17ff10c9ec9, type: 2}
+    minRewardAmount: 5
+    maxRewardAmount: 10
+  - itemSO: {fileID: 11400000, guid: d77327757acf5460b8b8cb4b23625855, type: 2}
+    minRewardAmount: 5
+    maxRewardAmount: 10
+  - itemSO: {fileID: 11400000, guid: 349be73ea29a849db842633aa5f5defc, type: 2}
+    minRewardAmount: 5
+    maxRewardAmount: 10
+  - itemSO: {fileID: 11400000, guid: a86a5ff4ff3b5456fa6bc4796a04c337, type: 2}
+    minRewardAmount: 5
+    maxRewardAmount: 10
+  - itemSO: {fileID: 11400000, guid: 630a7449c53fe44d5b677389b03cb31c, type: 2}
+    minRewardAmount: 5
+    maxRewardAmount: 10
+  - itemSO: {fileID: 11400000, guid: b625fc4d49d394c7c82985ee31daf2c6, type: 2}
+    minRewardAmount: 5
+    maxRewardAmount: 10
+  secondTierRewards:
+  - itemSO: {fileID: 11400000, guid: 8c207c38179ee4b528854aa334abffc7, type: 2}
+    minRewardAmount: 10
+    maxRewardAmount: 30
+  - itemSO: {fileID: 11400000, guid: b625fc4d49d394c7c82985ee31daf2c6, type: 2}
+    minRewardAmount: 10
+    maxRewardAmount: 30
+  - itemSO: {fileID: 11400000, guid: c7beb8c01955a4eaa85b9637eedb07ef, type: 2}
+    minRewardAmount: 1
+    maxRewardAmount: 1
+  - itemSO: {fileID: 11400000, guid: 0782ebeb854514a02a92aaac04682e05, type: 2}
+    minRewardAmount: 1
+    maxRewardAmount: 1
+  - itemSO: {fileID: 11400000, guid: 9db84eda3c48b45c7b5cdcb76128bb49, type: 2}
+    minRewardAmount: 1
+    maxRewardAmount: 1
+  - itemSO: {fileID: 11400000, guid: ebc729e057e6141b18e0fa73c763c62b, type: 2}
+    minRewardAmount: 1
+    maxRewardAmount: 1
+  - itemSO: {fileID: 11400000, guid: 34370a63482914a1aa342085c58154c6, type: 2}
+    minRewardAmount: 1
+    maxRewardAmount: 1
+  - itemSO: {fileID: 11400000, guid: bd78188d7b6a9431a92f30168382db18, type: 2}
+    minRewardAmount: 1
+    maxRewardAmount: 1
+  - itemSO: {fileID: 11400000, guid: 4d88179e3e9c14f11a296f4345d423c8, type: 2}
+    minRewardAmount: 1
+    maxRewardAmount: 1
+  - itemSO: {fileID: 11400000, guid: 02b89ab08645a415986da2f750ffe77d, type: 2}
+    minRewardAmount: 1
+    maxRewardAmount: 1
+  - itemSO: {fileID: 11400000, guid: 0fdd773ee3c64479bb3302c933e4dfdd, type: 2}
+    minRewardAmount: 10
+    maxRewardAmount: 30
+  - itemSO: {fileID: 11400000, guid: 21d7793e3984b474eaffc17ff10c9ec9, type: 2}
+    minRewardAmount: 10
+    maxRewardAmount: 30
+  - itemSO: {fileID: 11400000, guid: d77327757acf5460b8b8cb4b23625855, type: 2}
+    minRewardAmount: 10
+    maxRewardAmount: 30
+  - itemSO: {fileID: 11400000, guid: 349be73ea29a849db842633aa5f5defc, type: 2}
+    minRewardAmount: 10
+    maxRewardAmount: 30
+  - itemSO: {fileID: 11400000, guid: a86a5ff4ff3b5456fa6bc4796a04c337, type: 2}
+    minRewardAmount: 10
+    maxRewardAmount: 30
+  - itemSO: {fileID: 11400000, guid: 630a7449c53fe44d5b677389b03cb31c, type: 2}
+    minRewardAmount: 10
+    maxRewardAmount: 30
+  thirdTierRewards:
+  - itemSO: {fileID: 11400000, guid: 9db84eda3c48b45c7b5cdcb76128bb49, type: 2}
+    minRewardAmount: 1
+    maxRewardAmount: 1
+  - itemSO: {fileID: 11400000, guid: edcea7adf9f524610903bac6aa518990, type: 2}
+    minRewardAmount: 1
+    maxRewardAmount: 1
+  - itemSO: {fileID: 11400000, guid: 0782ebeb854514a02a92aaac04682e05, type: 2}
+    minRewardAmount: 1
+    maxRewardAmount: 1
+  - itemSO: {fileID: 11400000, guid: 8c207c38179ee4b528854aa334abffc7, type: 2}
+    minRewardAmount: 40
+    maxRewardAmount: 80
+  - itemSO: {fileID: 11400000, guid: b625fc4d49d394c7c82985ee31daf2c6, type: 2}
+    minRewardAmount: 40
+    maxRewardAmount: 80
+  - itemSO: {fileID: 11400000, guid: ebc729e057e6141b18e0fa73c763c62b, type: 2}
+    minRewardAmount: 1
+    maxRewardAmount: 1
+  - itemSO: {fileID: 11400000, guid: 34370a63482914a1aa342085c58154c6, type: 2}
+    minRewardAmount: 1
+    maxRewardAmount: 1
+  - itemSO: {fileID: 11400000, guid: bd78188d7b6a9431a92f30168382db18, type: 2}
+    minRewardAmount: 1
+    maxRewardAmount: 1
+  - itemSO: {fileID: 11400000, guid: 4d88179e3e9c14f11a296f4345d423c8, type: 2}
+    minRewardAmount: 1
+    maxRewardAmount: 1
+  - itemSO: {fileID: 11400000, guid: acb3777fe0d444b3f865be715bd34e14, type: 2}
+    minRewardAmount: 1
+    maxRewardAmount: 1
+  - itemSO: {fileID: 11400000, guid: 02b89ab08645a415986da2f750ffe77d, type: 2}
+    minRewardAmount: 1
+    maxRewardAmount: 1
+  - itemSO: {fileID: 11400000, guid: b955f43e9d3c24c338cd94d330555534, type: 2}
+    minRewardAmount: 1
+    maxRewardAmount: 1
+  - itemSO: {fileID: 11400000, guid: fcda1500dd5ef4c12b26d26c6fe0a1c8, type: 2}
+    minRewardAmount: 1
+    maxRewardAmount: 1
+  - itemSO: {fileID: 11400000, guid: b134c9ee5ed1e438983ee2d57b577092, type: 2}
+    minRewardAmount: 1
+    maxRewardAmount: 1
+  - itemSO: {fileID: 11400000, guid: 8f7fc211e3c6d4dada6c3410cba53f1e, type: 2}
+    minRewardAmount: 1
+    maxRewardAmount: 1
+  - itemSO: {fileID: 11400000, guid: 0fdd773ee3c64479bb3302c933e4dfdd, type: 2}
+    minRewardAmount: 30
+    maxRewardAmount: 80
+  - itemSO: {fileID: 11400000, guid: 21d7793e3984b474eaffc17ff10c9ec9, type: 2}
+    minRewardAmount: 30
+    maxRewardAmount: 80
+  - itemSO: {fileID: 11400000, guid: d77327757acf5460b8b8cb4b23625855, type: 2}
+    minRewardAmount: 30
+    maxRewardAmount: 80
+  - itemSO: {fileID: 11400000, guid: 349be73ea29a849db842633aa5f5defc, type: 2}
+    minRewardAmount: 30
+    maxRewardAmount: 80
+  - itemSO: {fileID: 11400000, guid: a86a5ff4ff3b5456fa6bc4796a04c337, type: 2}
+    minRewardAmount: 30
+    maxRewardAmount: 80
+  - itemSO: {fileID: 11400000, guid: 630a7449c53fe44d5b677389b03cb31c, type: 2}
+    minRewardAmount: 30
+    maxRewardAmount: 80
+  bomb:
+    itemSO: {fileID: 11400000, guid: 6a0cb522dc003476e92f5d166ba3c74c, type: 2}
+    minRewardAmount: 1
+    maxRewardAmount: 1
+  secondTierStartZone: 6
+  thirdTierStartZone: 13
