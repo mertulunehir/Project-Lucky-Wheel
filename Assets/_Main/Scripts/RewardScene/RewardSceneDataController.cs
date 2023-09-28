@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Zenject;
 
 namespace LWheel.RewardSceneNamespace
 {
@@ -16,12 +17,8 @@ namespace LWheel.RewardSceneNamespace
 
         private string failText;
         private string winText;
-        private RewardScene rewardScene;
+        [Inject]private RewardScene rewardScene;
 
-        private void Start()
-        {
-            rewardScene = GetComponent<RewardScene>();
-        }
 
         public void SetRewardSceneData(ItemSO currentRewardSO, int amount)
         {

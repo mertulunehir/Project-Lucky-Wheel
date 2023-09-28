@@ -22,10 +22,12 @@ namespace LWheel.LuckyWheelNameSpace
         private int silverRewardZoneRatio;
         private int goldRewardZoneRatio;
 
+        [Inject] private LuckyWheelImageController wheelImageController;
+
         public void GetWheelData(int zoneNumber)
         {
             currentRewards = rewardsDatabase.GetRandomElementsForLuckyWheel(zoneNumber);
-            GetComponent<LuckyWheelImageController>().SetLuckyWheelImage(zoneNumber);
+            wheelImageController.SetLuckyWheelImage(zoneNumber);
             SetBombPositionOnWheel(zoneNumber);
         }
 

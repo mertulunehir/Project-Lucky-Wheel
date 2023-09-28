@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using System;
+using Zenject;
 
 namespace LWheel.LuckyWheelNameSpace
 {
@@ -13,12 +14,9 @@ namespace LWheel.LuckyWheelNameSpace
         private int baseRotateCount;
         private float rotateTime;
         private AnimationCurve customRotateEase;
-        private LuckyWheel luckyWheel;
+        [Inject]private LuckyWheel luckyWheel;
         private int currentRewardIndex;
-        private void Start()
-        {
-            luckyWheel = GetComponent<LuckyWheel>();
-        }
+
         public void ResetWheelRotation()
         {
             wheelRotateParent.transform.eulerAngles = Vector3.zero;

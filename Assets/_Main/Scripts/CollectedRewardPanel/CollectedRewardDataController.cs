@@ -20,13 +20,13 @@ namespace LWheel.CollectedRewardsNameSpace
             currentColletedItemSO = collectedItem;
             currentCollectedItemAmount = amount;
             collectedRewardImage.sprite = currentColletedItemSO.itemIcon;
-            collectedRewardAmount.text = currentCollectedItemAmount.ToString();
+            collectedRewardAmount.text = "x"+currentCollectedItemAmount.ToString();
         }
 
         public void UpdateCollectedRewardData(int amount)
         {
             currentCollectedItemAmount += amount;
-            collectedRewardAmount.text = currentCollectedItemAmount.ToString();
+            collectedRewardAmount.text = "x"+currentCollectedItemAmount.ToString();
         }
 
         public ItemSO GetItemSO()

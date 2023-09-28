@@ -8,7 +8,8 @@ namespace LWheel.MoneyManagerNameSpace
 {
     public class MoneyManagerCanvasController : MonoBehaviour
     {
-        [SerializeField] private TMP_Text goldText, cashText;
+        [SerializeField] private TMP_Text goldText;
+        [SerializeField] private TMP_Text cashText;
 
         public void UpdateCashText(int currentCashAmount)
         {

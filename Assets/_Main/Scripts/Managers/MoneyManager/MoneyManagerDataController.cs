@@ -8,8 +8,8 @@ namespace LWheel.MoneyManagerNameSpace
 
     public class MoneyManagerDataController : MonoBehaviour
     {
-        private int currentGoldAmount, currentCashAmount;
-
+        private int currentGoldAmount;
+        private int currentCashAmount;
         private string cashSaveKey;
         private string goldSaveKey;
 

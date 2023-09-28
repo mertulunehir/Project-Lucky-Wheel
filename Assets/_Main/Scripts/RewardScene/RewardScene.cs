@@ -10,15 +10,13 @@ namespace LWheel.RewardSceneNamespace
     public class RewardScene : MonoBehaviour
     {
         [SerializeField] private RewardPanelSO rewardPanelSO;
-        private RewardSceneDataController rewardSceneDataController;
-        private RewardSceneButtonController rewardSceneButtonController;
+        [Inject] private RewardSceneDataController rewardSceneDataController;
+        [Inject] private RewardSceneButtonController rewardSceneButtonController;
 
         [Inject] private CollectedRewardsPanel collectedRewards;
 
         private void Awake()
         {
-            rewardSceneDataController = GetComponent<RewardSceneDataController>();
-            rewardSceneButtonController = GetComponent<RewardSceneButtonController>();
             SetDataFromSO();
         }
 

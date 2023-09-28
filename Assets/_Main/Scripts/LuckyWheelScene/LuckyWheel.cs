@@ -9,24 +9,18 @@ namespace LWheel.LuckyWheelNameSpace
 
     public class LuckyWheel : MonoBehaviour
     {
-        [SerializeField]private LuckyWheelSO luckyWheelSO;
+        [SerializeField] private LuckyWheelSO luckyWheelSO;
 
-        private LuckyWheelDataController wheelDataController;
-        private LuckyWheelRotateController wheelRotateController;
-        private LuckyWheelZoneController wheelZoneController;
-        private LuckyWheelButtonController wheelButtonController;
-        private LuckyWheelImageController wheelImageController;
+        [Inject] private LuckyWheelDataController wheelDataController;
+        [Inject] private LuckyWheelRotateController wheelRotateController;
+        [Inject] private LuckyWheelZoneController wheelZoneController;
+        [Inject] private LuckyWheelButtonController wheelButtonController;
+        [Inject] private LuckyWheelImageController wheelImageController;
 
         [Inject] private PanelChangeManager panelManager;
 
         void Awake()
         {
-            wheelDataController = GetComponent<LuckyWheelDataController>();
-            wheelRotateController = GetComponent<LuckyWheelRotateController>();
-            wheelZoneController = GetComponent<LuckyWheelZoneController>();
-            wheelButtonController = GetComponent<LuckyWheelButtonController>();
-            wheelImageController = GetComponent<LuckyWheelImageController>();
-
             SetLuckyWheelData();
         }
 

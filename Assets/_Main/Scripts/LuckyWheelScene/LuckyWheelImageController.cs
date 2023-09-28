@@ -10,7 +10,8 @@ namespace LWheel.LuckyWheelNameSpace
 
     public class LuckyWheelImageController : MonoBehaviour
     {
-        public Image indicatorImage, luckyWheelImage;
+        [SerializeField]private Image indicatorImage;
+        [SerializeField] private Image luckyWheelImage;
 
         private Sprite bronzeLuckyWheelSprite;
         private Sprite silverLuckyWheelSprite;
@@ -26,33 +27,6 @@ namespace LWheel.LuckyWheelNameSpace
 
         public void SetLuckyWheelImage(int zoneNumber)
         {
-            //if (zoneNumber < silverLuckyWheelRatio)
-            //{
-            //    if (!currentZone.Equals(LuckyWheelZones.Bronze))
-            //    {
-            //        currentZone = LuckyWheelZones.Bronze;
-            //        luckyWheelImage.sprite = bronzeLuckyWheelSprite;
-            //        indicatorImage.sprite = bronzeLuckyWheelIndicator;
-            //    }
-            //}
-            //else if (zoneNumber < goldLuckyWheelRatio)
-            //{
-            //    if (!currentZone.Equals(LuckyWheelZones.Silver))
-            //    {
-            //        currentZone = LuckyWheelZones.Silver;
-            //        luckyWheelImage.sprite = silverLuckyWheelSprite;
-            //        indicatorImage.sprite = silverLuckyWheelIndicator;
-            //    }
-            //}
-            //else if (zoneNumber >= goldLuckyWheelRatio)
-            //{
-            //    if (!currentZone.Equals(LuckyWheelZones.Gold))
-            //    {
-            //        currentZone = LuckyWheelZones.Gold;
-            //        luckyWheelImage.sprite = goldLuckyWheelSprite;
-            //        indicatorImage.sprite = goldLuckyWheelIndicator;
-            //    }
-            //}
 
             if(zoneNumber % goldLuckyWheelRatio == 0)
             {

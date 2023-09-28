@@ -8,7 +8,8 @@ namespace LWheel.PanelChangeNameSpace
 {
     public class PanelChangeManager : MonoBehaviour
     {
-        [SerializeField] private Transform rewardSceneParent, luckyWheelSceneParent;
+        [SerializeField] private Transform rewardSceneParent;
+        [SerializeField] private Transform luckyWheelSceneParent;
 
         public void OpenRewardPanel(ItemSO currenRewardSO, int amount)
         {

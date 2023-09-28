@@ -13,24 +13,27 @@ namespace LWheel.RewardSceneNamespace
 
     public class RewardSceneButtonController : MonoBehaviour
     {
-        [SerializeField] private Button giveUpButtonAfterReward, reviveButton, continueButton, giveUpButtonAfterBomb;
-
+        [SerializeField] private Button giveUpButtonAfterReward;
+        [SerializeField] private Button reviveButton;
+        [SerializeField] private Button continueButton;
+        [SerializeField] private Button giveUpButtonAfterBomb;
         [SerializeField] TMP_Text buttonCostText;
 
         [Inject] private PanelChangeManager panelManager;
         [Inject] private MoneyManager moneyManager;
+        [Inject] private RewardScene rewardScene;
 
         private int reviveButtonPrice;
 
         private void OnGiveUpButtonClickedAfterReward()
         {
-            GetComponent<RewardScene>().GiveCollectedRewards();
+            rewardScene.GiveCollectedRewards();
             panelManager.OpenLuckyWheelPanelAfterGiveUp();
         }
 
         private void OnGiveUpButtonClickedAfterBomb()
         {
-            GetComponent<RewardScene>().ClearCollectedRewards();
+            rewardScene.ClearCollectedRewards();
             panelManager.OpenLuckyWheelPanelAfterGiveUp();
         }
 

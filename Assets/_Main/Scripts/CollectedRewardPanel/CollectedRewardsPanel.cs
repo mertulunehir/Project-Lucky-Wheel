@@ -2,12 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 namespace LWheel.CollectedRewardsNameSpace
 {
     public class CollectedRewardsPanel : MonoBehaviour
     {
-        private CollectedRewardsPanelDataController dataController;
+        [Inject]private CollectedRewardsPanelDataController dataController;
 
         private void Start()
         {

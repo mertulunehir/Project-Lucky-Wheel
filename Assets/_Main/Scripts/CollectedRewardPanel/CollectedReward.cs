@@ -6,12 +6,8 @@ namespace LWheel.CollectedRewardsNameSpace
 {
     public class CollectedReward : MonoBehaviour
     {
-        private CollectedRewardDataController dataController;
-        // Start is called before the first frame update
-        void Awake()
-        {
-            dataController = GetComponent<CollectedRewardDataController>();
-        }
+        [SerializeField] private CollectedRewardDataController dataController;
+
 
         public void SetCollectedRewardData(ItemSO collectedItemSO, int amount)
         {
