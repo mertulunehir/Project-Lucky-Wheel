@@ -3,20 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using System;
 
 namespace LWheel.LuckyWheelNameSpace
 {
     public class LuckyWheelRotateController : MonoBehaviour
     {
         [SerializeField] private Transform wheelRotateParent;
-        [SerializeField] private int baseRotateCount = 3;
-        [SerializeField] private float rotateTime = 3;
-        [SerializeField] private AnimationCurve customRotateEase;
-
+        private int baseRotateCount;
+        private float rotateTime;
+        private AnimationCurve customRotateEase;
         private LuckyWheel luckyWheel;
-
         private int currentRewardIndex;
-
         private void Start()
         {
             luckyWheel = GetComponent<LuckyWheel>();
@@ -41,6 +39,13 @@ namespace LWheel.LuckyWheelNameSpace
         private void OpenRewardScene()
         {
             luckyWheel.OpenRewardSceneAfterLuckyWheel();
+        }
+
+        public void SetDataFromSO(LuckyWheelSO luckyWheelSO)
+        {
+            baseRotateCount = luckyWheelSO.baseRotateCount;
+            rotateTime = luckyWheelSO.rotateTime;
+            customRotateEase = luckyWheelSO.customerRotateEase;
         }
     }
 

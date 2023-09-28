@@ -9,8 +9,8 @@ namespace LWheel.CollectedRewardsNameSpace
 
     public class CollectedRewardDataController : MonoBehaviour
     {
-        public Image collectedRewardImage;
-        public TMP_Text collectedRewardAmount;
+        [SerializeField] private Image collectedRewardImage;
+        [SerializeField] private TMP_Text collectedRewardAmount;
 
         private ItemSO currentColletedItemSO;
         private int currentCollectedItemAmount = 0;

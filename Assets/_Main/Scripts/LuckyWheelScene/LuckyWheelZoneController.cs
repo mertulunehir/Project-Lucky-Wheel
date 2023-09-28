@@ -34,6 +34,7 @@ namespace LWheel.LuckyWheelNameSpace
             return currentZoneNumber;
         }
 
+        //TODO : this script will be changed
         private void SetZoneInfoText()
         {
             string infotext;

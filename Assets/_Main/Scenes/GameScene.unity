@@ -5091,7 +5091,7 @@ GameObject:
   - component: {fileID: 1943363931}
   - component: {fileID: 1943363932}
   m_Layer: 0
-  m_Name: LuckyWheelScene
+  m_Name: LuckyWheelPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5126,50 +5126,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wheelRotateParent: {fileID: 342622117}
-  baseRotateCount: 3
-  rotateTime: 3
-  customRotateEase:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0.47957033
-      outSlope: 0.47957033
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.106460094
-      value: 0.051055104
-      inSlope: 0.832114
-      outSlope: 0.832114
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.6511813
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.6933352
-      value: 0.99491
-      inSlope: 0.8124351
-      outSlope: 0.8124351
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0.01659792
-      outSlope: 0.01659792
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!114 &1943363928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5203,6 +5159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46cef8f406b834aa7bffbe1a36b43013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  luckyWheelSO: {fileID: 11400000, guid: e2fc3bd6d2e7442378ee2879cbc0aa12, type: 2}
 --- !u!114 &1943363930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5243,12 +5200,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indicatorImage: {fileID: 232253429}
   luckyWheelImage: {fileID: 1055442376}
-  bronzeLuckyWheelSprite: {fileID: 21300000, guid: 6657053415cb14032aacf60812c8a296, type: 3}
-  silverLuckyWheelSprite: {fileID: 21300000, guid: 93dfb1526496e4c7ca1d8f3a68a3b8cf, type: 3}
-  goldLuckyWheelSprite: {fileID: 21300000, guid: f3ba31fa4f7134948a477e78cdf9995e, type: 3}
-  bronzeLuckyWheelIndicator: {fileID: 21300000, guid: 315da89634aac4bcfaeb7c2c539cce99, type: 3}
-  silverLuckyWheelIndicator: {fileID: 21300000, guid: d97fa91b46fe14b0c96ed02faaa0195b, type: 3}
-  goldLuckyWheelIndicator: {fileID: 21300000, guid: afba459738bd2435e8db03e603e97670, type: 3}
 --- !u!1 &1976744731
 GameObject:
   m_ObjectHideFlags: 0
@@ -5454,7 +5405,7 @@ GameObject:
   - component: {fileID: 2016249585}
   - component: {fileID: 2016249584}
   m_Layer: 0
-  m_Name: RewardScene
+  m_Name: RewardPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

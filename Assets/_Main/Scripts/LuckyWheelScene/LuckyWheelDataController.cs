@@ -19,8 +19,8 @@ namespace LWheel.LuckyWheelNameSpace
         private int currentChosenRewardAmount;
         private int currentChosenRewardIndex;
 
-        private const int silverRewardZoneNumber = 5;
-        private const int goldRewardZoneNumber = 30;
+        private int silverRewardZoneRatio;
+        private int goldRewardZoneRatio;
 
         public void GetWheelData(int zoneNumber)
         {
@@ -31,19 +31,10 @@ namespace LWheel.LuckyWheelNameSpace
 
         private void SetBombPositionOnWheel(int zoneNumber)
         {
-            if (zoneNumber < silverRewardZoneNumber)
+
+            if(zoneNumber % silverRewardZoneRatio == 0 || zoneNumber % goldRewardZoneRatio == 0)
             {
-                currentRewards[Random.Range(0, currentRewards.Count)] = rewardsDatabase.bomb;
-            }
-            else if (zoneNumber == silverRewardZoneNumber)
-            {
-            }
-            else if (zoneNumber < goldRewardZoneNumber)
-            {
-                currentRewards[Random.Range(0, currentRewards.Count)] = rewardsDatabase.bomb;
-            }
-            else if (zoneNumber == goldRewardZoneNumber)
-            {
+
             }
             else
             {
@@ -79,6 +70,12 @@ namespace LWheel.LuckyWheelNameSpace
         public int GetCurrentRewardItemAmount()
         {
             return currentChosenRewardAmount;
+        }
+
+        public void SetDataFromSO(LuckyWheelSO luckyWheelSO)
+        {
+            silverRewardZoneRatio = luckyWheelSO.silverLuckyWheelRatio;
+            goldRewardZoneRatio = luckyWheelSO.goldLuckyWheelRatio;
         }
     }
 }
