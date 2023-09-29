@@ -34,6 +34,7 @@ namespace LWheel.LuckyWheelNameSpace
             wheelDataController.SetDataFromSO(luckyWheelSO);
             wheelRotateController.SetDataFromSO(luckyWheelSO);
             wheelImageController.SetDataFromSO(luckyWheelSO);
+            wheelZoneController.SetDataFromSO(luckyWheelSO);
         }
 
 

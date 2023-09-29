@@ -19,12 +19,12 @@ namespace LWheel.LuckyWheelNameSpace
         private int maxZoneNumber;
 
 
-        private int startSpawnCount = 7;
-        private int silverWheelRatio = 5;
-        private int goldWheelRatio = 30;
-        public Color bronzeColor;
-        public Color silverColor;
-        public Color goldColor;
+        private int startSpawnCount;
+        private int silverWheelRatio;
+        private int goldWheelRatio;
+        private Color bronzeColor;
+        private Color silverColor;
+        private Color goldColor;
 
 
         private void Start()
@@ -63,6 +63,12 @@ namespace LWheel.LuckyWheelNameSpace
             
         }
 
+
+        private void MoveBar()
+        {
+            zoneNumberParent.DOLocalMoveX(zoneNumberParent.localPosition.x - 100, 0.7f).SetEase(Ease.InBounce);
+        }
+
         public void ResetZoneNumber()
         {
             zoneNumberParent.localPosition = Vector3.zero;
@@ -86,16 +92,19 @@ namespace LWheel.LuckyWheelNameSpace
 
         }
 
-        private void MoveBar()
-        {
-            zoneNumberParent.DOLocalMoveX(zoneNumberParent.localPosition.x-100,0.7f).SetEase(Ease.InBounce);
-        }
-
         public int GetZoneNumber()
         {
             return currentZoneCount;
         }
 
-
+        public void SetDataFromSO(LuckyWheelSO luckyWheelSO)
+        {
+            startSpawnCount = luckyWheelSO.zoneBarStartSpawnCount;
+            silverWheelRatio = luckyWheelSO.silverLuckyWheelRatio;
+            goldWheelRatio = luckyWheelSO.goldLuckyWheelRatio;
+             bronzeColor= luckyWheelSO.zoneBarBackgroundBronzeColor;
+            silverColor = luckyWheelSO.zoneBarBackgroundSilverColor;
+            goldColor = luckyWheelSO.zoneBarBackgroundGoldColor;
+        }
     }
 }

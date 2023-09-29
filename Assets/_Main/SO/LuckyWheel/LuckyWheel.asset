@@ -58,6 +58,10 @@ MonoBehaviour:
     m_RotationOrder: 4
   silverLuckyWheelRatio: 5
   goldLuckyWheelRatio: 30
+  zoneBarStartSpawnCount: 7
+  zoneBarBackgroundBronzeColor: {r: 0.61960787, g: 0.36862746, b: 0.11764706, a: 1}
+  zoneBarBackgroundSilverColor: {r: 0.74509805, g: 0.74509805, b: 0.74509805, a: 1}
+  zoneBarBackgroundGoldColor: {r: 0.9411765, g: 0.70980394, b: 0.1764706, a: 1}
   bronzeLuckyWheelSprite: {fileID: 21300000, guid: 6657053415cb14032aacf60812c8a296, type: 3}
   silverLuckyWheelSprite: {fileID: 21300000, guid: 93dfb1526496e4c7ca1d8f3a68a3b8cf, type: 3}
   goldLuckyWheelSprite: {fileID: 21300000, guid: f3ba31fa4f7134948a477e78cdf9995e, type: 3}
