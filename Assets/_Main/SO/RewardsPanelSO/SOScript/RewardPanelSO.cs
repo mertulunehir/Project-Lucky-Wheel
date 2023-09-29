@@ -9,4 +9,10 @@ public class RewardPanelSO : ScriptableObject
     [Header("Information Texts")]
     public string winText;
     public string failText;
+    [Header("Card Animation Parameters")]
+    public float cardShakeDuration;
+    public float cardShakeStrenght;
+    public int cardShakeVibrato;
+    public float cardShakeRandomness;
+    public float animationDelay;
 }

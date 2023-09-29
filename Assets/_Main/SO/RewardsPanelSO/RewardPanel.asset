@@ -13,5 +13,10 @@ MonoBehaviour:
   m_Name: RewardPanel
   m_EditorClassIdentifier: 
   reviveButtonPrice: 50
-  winText: You Rock! Keep Going
+  winText: You Rock! Keep Going..
   failText: You Failed
+  cardShakeDuration: 1.3
+  cardShakeStrenght: 10
+  cardShakeVibrato: 1
+  cardShakeRandomness: 70
+  animationDelay: 1.1

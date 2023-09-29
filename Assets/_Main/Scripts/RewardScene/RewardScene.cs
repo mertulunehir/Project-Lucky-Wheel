@@ -12,6 +12,7 @@ namespace LWheel.RewardSceneNamespace
         [SerializeField] private RewardPanelSO rewardPanelSO;
         [Inject] private RewardSceneDataController rewardSceneDataController;
         [Inject] private RewardSceneButtonController rewardSceneButtonController;
+        [Inject] private RewardSceneAnimationController rewardSceneAnimationController;
 
         [Inject] private CollectedRewardsPanel collectedRewards;
 
@@ -24,13 +25,14 @@ namespace LWheel.RewardSceneNamespace
         {
             rewardSceneButtonController.SetDataFromSO(rewardPanelSO);
             rewardSceneDataController.SetDataFromSO(rewardPanelSO);
+            rewardSceneAnimationController.SetDataFromSO(rewardPanelSO);
         }
 
         public void SetRewardSceneData(ItemSO currentRewardSO, int amount)
         {
             rewardSceneDataController.SetRewardSceneData(currentRewardSO, amount);
-
             collectedRewards.AddCollectedReward(currentRewardSO, amount);
+            
         }
 
         public void ButtonRewardConfig()
@@ -52,6 +54,17 @@ namespace LWheel.RewardSceneNamespace
         public void ClearCollectedRewards()
         {
             collectedRewards.ClearCollectedRewards();
+        }
+
+        public void StartCardAnim()
+        {
+            rewardSceneAnimationController.StartCardAnim();
+        }
+
+        public void StopCardAnim()
+        {
+            rewardSceneAnimationController.StopCardAnim();
+
         }
     }
 }

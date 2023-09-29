@@ -16,18 +16,23 @@ namespace LWheel.PanelChangeNameSpace
             luckyWheelSceneParent.gameObject.SetActive(false);
             rewardSceneParent.gameObject.SetActive(true);
             rewardSceneParent.parent.GetComponent<RewardScene>().SetRewardSceneData(currenRewardSO, amount);
+            rewardSceneParent.parent.GetComponent<RewardScene>().StartCardAnim();
         }
         public void OpenLuckyWheelPanelAfterReward()
         {
             rewardSceneParent.gameObject.SetActive(false);
             luckyWheelSceneParent.gameObject.SetActive(true);
             luckyWheelSceneParent.parent.GetComponent<LuckyWheel>().ResetLuckyWheelAfterContinueButton();
+            rewardSceneParent.parent.GetComponent<RewardScene>().StopCardAnim();
+
         }
         public void OpenLuckyWheelPanelAfterGiveUp()
         {
             rewardSceneParent.gameObject.SetActive(false);
             luckyWheelSceneParent.gameObject.SetActive(true);
             luckyWheelSceneParent.parent.GetComponent<LuckyWheel>().ResetLuckyWheelAfterGiveUp();
+            rewardSceneParent.parent.GetComponent<RewardScene>().StopCardAnim();
+
         }
     }
 
