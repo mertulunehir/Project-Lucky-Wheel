@@ -5699,6 +5699,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateButton: {fileID: 1448172307}
+  buttonRotateTime: 1
+  buttonSpinAnimDelay: 2
+  rotateEase: 27
 --- !u!114 &1943363931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5713,9 +5716,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zoneNumberParent: {fileID: 1699016751}
   zoneNumberPrefab: {fileID: 6125425091495279204, guid: 502ba7f6602bb4a00a208336dbe572c0, type: 3}
-  bronzeColor: {r: 0.61960787, g: 0.36862746, b: 0.11764706, a: 1}
-  silverColor: {r: 0.74509805, g: 0.74509805, b: 0.74509805, a: 1}
-  goldColor: {r: 0.9411765, g: 0.70980394, b: 0.1764706, a: 1}
 --- !u!114 &1943363932
 MonoBehaviour:
   m_ObjectHideFlags: 0
