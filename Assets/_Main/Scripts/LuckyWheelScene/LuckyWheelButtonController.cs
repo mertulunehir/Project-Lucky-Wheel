@@ -19,9 +19,11 @@ namespace LWheel.LuckyWheelNameSpace
 
         [Inject] private LuckyWheel luckyWheel;
 
-        public float buttonRotateTime = 1;
-        public float buttonSpinAnimDelay = 1;
-        public Ease rotateEase = Ease.OutBack;
+        private float buttonRotateTime;
+        private float buttonSpinAnimDelay;
+        private float buttonIdleAnimsizeMuiltiplier;
+        private float buttonClickAnimsizeMuiltiplier;
+        private Ease rotateEase;
 
         private void Start()
         {
@@ -61,8 +63,8 @@ namespace LWheel.LuckyWheelNameSpace
         {
             if(canPressButton==true)
             {
-                sizeAnimTween = rotateButton.transform.DOScale(Vector3.one * 1.1f, buttonRotateTime * 0.3f).OnComplete(ButtonShrinkAnim);
-                spinAnimTween = rotateButton.transform.DORotate(new Vector3(0, 0, 360), buttonRotateTime, RotateMode.LocalAxisAdd).SetEase(rotateEase).OnComplete(StartButtonRotateAnim);
+                sizeAnimTween = rotateButton.transform.DOScale(Vector3.one * buttonIdleAnimsizeMuiltiplier, buttonRotateTime * 0.3f).OnComplete(ButtonShrinkAnim);
+                spinAnimTween = rotateButton.transform.DORotate(Vector3.forward*360, buttonRotateTime, RotateMode.LocalAxisAdd).SetEase(rotateEase).OnComplete(StartButtonRotateAnim);
 
             }
         }
@@ -71,13 +73,13 @@ namespace LWheel.LuckyWheelNameSpace
         {
             spinAnimTween.Kill();
             rotateButton.transform.localEulerAngles = Vector3.zero;
-            spinAnimTween = rotateButton.transform.DORotate(new Vector3(0, 0, 360), buttonRotateTime, RotateMode.LocalAxisAdd).SetEase(rotateEase).OnComplete(StartButtonRotateAnim);
+            spinAnimTween = rotateButton.transform.DORotate(Vector3.forward * 360, buttonRotateTime, RotateMode.LocalAxisAdd).SetEase(rotateEase).OnComplete(StartButtonRotateAnim);
 
         }
 
         private void GrowAfterButtonClick()
         {
-            sizeAnimTween = rotateButton.transform.DOScale(Vector3.one * 1.3f, buttonRotateTime * 0.3f).OnComplete(ButtonShrinkAnim);
+            sizeAnimTween = rotateButton.transform.DOScale(Vector3.one * buttonClickAnimsizeMuiltiplier, buttonRotateTime * 0.3f).OnComplete(ButtonShrinkAnim);
         }
 
         private void ButtonShrinkAnim()
@@ -107,5 +109,13 @@ namespace LWheel.LuckyWheelNameSpace
 
         }
 
+        public void SetDataFromSO(LuckyWheelSO luckyWheelSO)
+        {
+            buttonRotateTime = luckyWheelSO.buttonRotateTime;
+            buttonSpinAnimDelay = luckyWheelSO.buttonSpinAnimDelay;
+            buttonIdleAnimsizeMuiltiplier = luckyWheelSO.buttonIdleAnimsizeMuiltiplier;
+            buttonClickAnimsizeMuiltiplier = luckyWheelSO.buttonClickAnimsizeMuiltiplier;
+            rotateEase = luckyWheelSO.spinButtonRotateEase;
+        }
     }
 }

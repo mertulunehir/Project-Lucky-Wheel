@@ -10,6 +10,7 @@ namespace LWheel.CollectedRewardsNameSpace
     public class CollectedRewardDataController : MonoBehaviour
     {
         [SerializeField] private Image collectedRewardImage;
+        [SerializeField] private Image collectedRewardBackgroundImage;
         [SerializeField] private TMP_Text collectedRewardAmount;
 
         private ItemSO currentColletedItemSO;
@@ -21,6 +22,7 @@ namespace LWheel.CollectedRewardsNameSpace
             currentCollectedItemAmount = amount;
             collectedRewardImage.sprite = currentColletedItemSO.itemIcon;
             collectedRewardAmount.text = "x"+currentCollectedItemAmount.ToString();
+            collectedRewardBackgroundImage.color = collectedItem.rewardBackgroundColor;
         }
 
         public void UpdateCollectedRewardData(int amount)
