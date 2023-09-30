@@ -11,11 +11,12 @@ namespace LWheel.LuckyWheelNameSpace
     public class LuckyWheelRotateController : MonoBehaviour
     {
         [SerializeField] private Transform wheelRotateParent;
-        private int baseRotateCount;
-        private float rotateTime;
-        private AnimationCurve customRotateEase;
+        private int _baseRotateCount;
+        private float _rotateTime;
+        private AnimationCurve _customRotateEase;
+        private int _currentRewardIndex;
+
         [Inject]private LuckyWheel luckyWheel;
-        private int currentRewardIndex;
 
         public void ResetWheelRotation()
         {
@@ -24,14 +25,14 @@ namespace LWheel.LuckyWheelNameSpace
 
         public void SetCurrentRewardIndex(int index)
         {
-            currentRewardIndex = index;
+            _currentRewardIndex = index;
         }
 
         public void RotateLuckyWheel()
         {
-            int offset = 45 * currentRewardIndex;
-            wheelRotateParent.DOLocalRotate(new Vector3(0, 0, baseRotateCount * 360 + offset), rotateTime, RotateMode.LocalAxisAdd).SetEase(customRotateEase);
-            DOVirtual.DelayedCall(rotateTime + 1f, OpenRewardScene);
+            int offset = 45 * _currentRewardIndex;
+            wheelRotateParent.DOLocalRotate(new Vector3(0, 0, _baseRotateCount * 360 + offset), _rotateTime, RotateMode.LocalAxisAdd).SetEase(_customRotateEase);
+            DOVirtual.DelayedCall(_rotateTime + 1f, OpenRewardScene);
         }
 
         private void OpenRewardScene()
@@ -41,9 +42,9 @@ namespace LWheel.LuckyWheelNameSpace
 
         public void SetDataFromSO(LuckyWheelSO luckyWheelSO)
         {
-            baseRotateCount = luckyWheelSO.baseRotateCount;
-            rotateTime = luckyWheelSO.rotateTime;
-            customRotateEase = luckyWheelSO.customerRotateEase;
+            _baseRotateCount = luckyWheelSO.baseRotateCount;
+            _rotateTime = luckyWheelSO.rotateTime;
+            _customRotateEase = luckyWheelSO.customerRotateEase;
         }
     }
 

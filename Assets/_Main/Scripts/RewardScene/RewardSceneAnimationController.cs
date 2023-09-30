@@ -12,63 +12,63 @@ namespace LWheel.RewardSceneNamespace
         [SerializeField] private Transform glowImageTransform;
         [SerializeField] private Transform glowBackgroundImageTransform;
 
-        private float cardShakeDuration;
-        private float cardShakeStrenght;
-        private int cardShakeVibrato;
-        private float cardShakeRandomness;
-        private float animationDelay;
-        private float glowImageRotateSpeed;
-        private float glowBackgroundImageRotateSpeed;
+        private float _cardShakeDuration;
+        private float _cardShakeStrenght;
+        private int _cardShakeVibrato;
+        private float _cardShakeRandomness;
+        private float _animationDelay;
+        private float _glowImageRotateSpeed;
+        private float _glowBackgroundImageRotateSpeed;
 
-        private bool canRotateGlowImage;
-        private Tween cardShakeTween;
-        private bool canShakeCard;
+        private bool _canRotateGlowImage;
+        private Tween _cardShakeTween;
+        private bool _canShakeCard;
 
         public void StartCardAnim()
         {
-            canRotateGlowImage = true;
-            canShakeCard = true;
-            cardShakeTween.Kill();
-            cardShakeTween = null;
+            _canRotateGlowImage = true;
+            _canShakeCard = true;
+            _cardShakeTween.Kill();
+            _cardShakeTween = null;
             cardParentTransform.localEulerAngles = Vector3.zero;
-            DOVirtual.DelayedCall(animationDelay, CardShake);
+            DOVirtual.DelayedCall(_animationDelay, CardShake);
         }
 
         private void Update()
         {
-            if(canRotateGlowImage)
+            if(_canRotateGlowImage)
             {
-                glowImageTransform.Rotate(0,0,glowImageRotateSpeed*Time.deltaTime);
-                glowBackgroundImageTransform.Rotate(0,0, glowBackgroundImageRotateSpeed * Time.deltaTime);
+                glowImageTransform.Rotate(0,0, _glowImageRotateSpeed * Time.deltaTime);
+                glowBackgroundImageTransform.Rotate(0,0, _glowBackgroundImageRotateSpeed * Time.deltaTime);
             }
         }
 
         private void CardShake()
         {
-            if (canShakeCard == true)
-                cardShakeTween = cardParentTransform.DOShakeRotation(cardShakeDuration, cardShakeStrenght, cardShakeVibrato, cardShakeRandomness).OnComplete(StartCardAnim);
+            if (_canShakeCard == true)
+                _cardShakeTween = cardParentTransform.DOShakeRotation(_cardShakeDuration, _cardShakeStrenght, _cardShakeVibrato, _cardShakeRandomness).OnComplete(StartCardAnim);
         }
 
         public void StopCardAnim()
         {
-            if (cardShakeTween != null)
+            if (_cardShakeTween != null)
             {
-                cardShakeTween.Kill();
+                _cardShakeTween.Kill();
                 cardParentTransform.localEulerAngles = Vector3.zero;
-                canShakeCard = false;
-                canRotateGlowImage = false;
+                _canShakeCard = false;
+                _canRotateGlowImage = false;
             }
         }
 
         public void SetDataFromSO(RewardPanelSO rewardPanelSO)
         {
-            cardShakeDuration = rewardPanelSO.cardShakeDuration;
-            cardShakeStrenght = rewardPanelSO.cardShakeStrenght;
-            cardShakeVibrato = rewardPanelSO.cardShakeVibrato;
-            cardShakeRandomness = rewardPanelSO.cardShakeRandomness;
-            animationDelay = rewardPanelSO.animationDelay;
-            glowImageRotateSpeed = rewardPanelSO.glowImageRotateSpeed;
-            glowBackgroundImageRotateSpeed = rewardPanelSO.glowBackgroundImageRotateSpeed;
+            _cardShakeDuration = rewardPanelSO.cardShakeDuration;
+            _cardShakeStrenght = rewardPanelSO.cardShakeStrenght;
+            _cardShakeVibrato = rewardPanelSO.cardShakeVibrato;
+            _cardShakeRandomness = rewardPanelSO.cardShakeRandomness;
+            _animationDelay = rewardPanelSO.animationDelay;
+            _glowImageRotateSpeed = rewardPanelSO.glowImageRotateSpeed;
+            _glowBackgroundImageRotateSpeed = rewardPanelSO.glowBackgroundImageRotateSpeed;
         }
     }
 

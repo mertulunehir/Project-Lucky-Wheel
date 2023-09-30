@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class ZoneNumberUIController : MonoBehaviour
 {
-    public TMP_Text numberText;
-    public Image backgroundImage;
+    [SerializeField]private TMP_Text numberText;
+    [SerializeField] private Image backgroundImage;
 
     public void SetUIData(int number,Color backgroundColor)
     {

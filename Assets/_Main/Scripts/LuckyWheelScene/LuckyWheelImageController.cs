@@ -13,12 +13,12 @@ namespace LWheel.LuckyWheelNameSpace
         [SerializeField]private Image indicatorImage;
         [SerializeField] private Image luckyWheelImage;
 
-        private Sprite bronzeLuckyWheelSprite;
-        private Sprite silverLuckyWheelSprite;
-        private Sprite goldLuckyWheelSprite;
-        private Sprite bronzeLuckyWheelIndicator;
-        private Sprite silverLuckyWheelIndicator;
-        private Sprite goldLuckyWheelIndicator;
+        private Sprite _bronzeLuckyWheelSprite;
+        private Sprite _silverLuckyWheelSprite;
+        private Sprite _goldLuckyWheelSprite;
+        private Sprite _bronzeLuckyWheelIndicator;
+        private Sprite _silverLuckyWheelIndicator;
+        private Sprite _goldLuckyWheelIndicator;
 
         private LuckyWheelZones currentZone = LuckyWheelZones.Bronze;
 
@@ -33,8 +33,8 @@ namespace LWheel.LuckyWheelNameSpace
                 if (!currentZone.Equals(LuckyWheelZones.Gold))
                 {
                     currentZone = LuckyWheelZones.Gold;
-                    luckyWheelImage.sprite = goldLuckyWheelSprite;
-                    indicatorImage.sprite = goldLuckyWheelIndicator;
+                    luckyWheelImage.sprite = _goldLuckyWheelSprite;
+                    indicatorImage.sprite = _goldLuckyWheelIndicator;
                 }
             }
             else if (zoneNumber % silverLuckyWheelRatio == 0 )
@@ -42,8 +42,8 @@ namespace LWheel.LuckyWheelNameSpace
                 if (!currentZone.Equals(LuckyWheelZones.Silver))
                 {
                     currentZone = LuckyWheelZones.Silver;
-                    luckyWheelImage.sprite = silverLuckyWheelSprite;
-                    indicatorImage.sprite = silverLuckyWheelIndicator;
+                    luckyWheelImage.sprite = _silverLuckyWheelSprite;
+                    indicatorImage.sprite = _silverLuckyWheelIndicator;
                 }
             }
             else
@@ -51,20 +51,20 @@ namespace LWheel.LuckyWheelNameSpace
                 if (!currentZone.Equals(LuckyWheelZones.Bronze))
                 {
                     currentZone = LuckyWheelZones.Bronze;
-                    luckyWheelImage.sprite = bronzeLuckyWheelSprite;
-                    indicatorImage.sprite = bronzeLuckyWheelIndicator;
+                    luckyWheelImage.sprite = _bronzeLuckyWheelSprite;
+                    indicatorImage.sprite = _bronzeLuckyWheelIndicator;
                 }
             }
         }
 
         public void SetDataFromSO(LuckyWheelSO luckyWheelSO)
         {
-            bronzeLuckyWheelSprite = luckyWheelSO.bronzeLuckyWheelSprite;
-            silverLuckyWheelSprite = luckyWheelSO.silverLuckyWheelSprite;
-            goldLuckyWheelSprite = luckyWheelSO.goldLuckyWheelSprite;
-            bronzeLuckyWheelIndicator = luckyWheelSO.bronzeLuckyWheelIndicator;
-            silverLuckyWheelIndicator = luckyWheelSO.silverLuckyWheelIndicator;
-            goldLuckyWheelIndicator = luckyWheelSO.goldLuckyWheelIndicator;
+            _bronzeLuckyWheelSprite = luckyWheelSO.bronzeLuckyWheelSprite;
+            _silverLuckyWheelSprite = luckyWheelSO.silverLuckyWheelSprite;
+            _goldLuckyWheelSprite = luckyWheelSO.goldLuckyWheelSprite;
+            _bronzeLuckyWheelIndicator = luckyWheelSO.bronzeLuckyWheelIndicator;
+            _silverLuckyWheelIndicator = luckyWheelSO.silverLuckyWheelIndicator;
+            _goldLuckyWheelIndicator = luckyWheelSO.goldLuckyWheelIndicator;
 
             silverLuckyWheelRatio = luckyWheelSO.silverLuckyWheelRatio;
             goldLuckyWheelRatio = luckyWheelSO.goldLuckyWheelRatio;

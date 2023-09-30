@@ -13,32 +13,32 @@ namespace LWheel.CollectedRewardsNameSpace
         [SerializeField] private Image collectedRewardBackgroundImage;
         [SerializeField] private TMP_Text collectedRewardAmount;
 
-        private ItemSO currentColletedItemSO;
-        private int currentCollectedItemAmount = 0;
+        private ItemSO _currentColletedItemSO;
+        private int _currentCollectedItemAmount = 0;
 
         public void SetCollectedRewardData(ItemSO collectedItem, int amount)
         {
-            currentColletedItemSO = collectedItem;
-            currentCollectedItemAmount = amount;
-            collectedRewardImage.sprite = currentColletedItemSO.itemIcon;
-            collectedRewardAmount.text = "x"+currentCollectedItemAmount.ToString();
+            _currentColletedItemSO = collectedItem;
+            _currentCollectedItemAmount = amount;
+            collectedRewardImage.sprite = _currentColletedItemSO.itemIcon;
+            collectedRewardAmount.text = "x"+ _currentCollectedItemAmount.ToString();
             collectedRewardBackgroundImage.color = collectedItem.rewardBackgroundColor;
         }
 
         public void UpdateCollectedRewardData(int amount)
         {
-            currentCollectedItemAmount += amount;
-            collectedRewardAmount.text = "x"+currentCollectedItemAmount.ToString();
+            _currentCollectedItemAmount += amount;
+            collectedRewardAmount.text = "x"+ _currentCollectedItemAmount.ToString();
         }
 
         public ItemSO GetItemSO()
         {
-            return currentColletedItemSO;
+            return _currentColletedItemSO;
         }
 
         public int GetItemAmount()
         {
-            return currentCollectedItemAmount;
+            return _currentCollectedItemAmount;
         }
     }
 }

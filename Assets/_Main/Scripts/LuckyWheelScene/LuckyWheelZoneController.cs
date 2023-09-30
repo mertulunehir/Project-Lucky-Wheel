@@ -14,17 +14,17 @@ namespace LWheel.LuckyWheelNameSpace
         [SerializeField] private ZoneNumberUIController zoneNumberPrefab;
 
 
-        private int currentZoneCount = 1;
-        private int currentTextZoneCount = 1;
-        private int maxZoneNumber;
+        private int _currentZoneCount = 1;
+        private int _currentTextZoneCount = 1;
+        private int _maxZoneNumber;
 
 
-        private int startSpawnCount;
-        private int silverWheelRatio;
-        private int goldWheelRatio;
-        private Color bronzeColor;
-        private Color silverColor;
-        private Color goldColor;
+        private int _startSpawnCount;
+        private int _silverWheelRatio;
+        private int _goldWheelRatio;
+        private Color _bronzeColor;
+        private Color _silverColor;
+        private Color _goldColor;
 
 
         private void Start()
@@ -34,11 +34,11 @@ namespace LWheel.LuckyWheelNameSpace
 
         private void CreateStartZoneNumbers()
         {
-            for (int i = 0; i < startSpawnCount; i++)
+            for (int i = 0; i < _startSpawnCount; i++)
             {
                 GameObject zoneNumber = Instantiate(zoneNumberPrefab.gameObject, zoneNumberParent);
-                zoneNumber.GetComponent<ZoneNumberUIController>().SetUIData(currentTextZoneCount, GetLevelBackgroundColor(currentTextZoneCount));
-                currentTextZoneCount++;
+                zoneNumber.GetComponent<ZoneNumberUIController>().SetUIData(_currentTextZoneCount, GetLevelBackgroundColor(_currentTextZoneCount));
+                _currentTextZoneCount++;
             }
 
         }
@@ -47,19 +47,19 @@ namespace LWheel.LuckyWheelNameSpace
         {
             if (currentZoneCount != 0)
             {
-                if (currentZoneCount % goldWheelRatio == 0)
+                if (currentZoneCount % _goldWheelRatio == 0)
                 {
-                    return goldColor;
+                    return _goldColor;
                 }
-                else if (currentZoneCount % silverWheelRatio == 0)
+                else if (currentZoneCount % _silverWheelRatio == 0)
                 {
-                    return silverColor;
+                    return _silverColor;
                 }
                 else
-                    return bronzeColor;
+                    return _bronzeColor;
             }
             else
-                return bronzeColor;
+                return _bronzeColor;
             
         }
 
@@ -72,21 +72,21 @@ namespace LWheel.LuckyWheelNameSpace
         public void ResetZoneNumber()
         {
             zoneNumberParent.localPosition = Vector3.zero;
-            currentZoneCount = 1;
-            currentTextZoneCount = 1+startSpawnCount;
+            _currentZoneCount = 1;
+            _currentTextZoneCount = 1+ _startSpawnCount;
         }
 
         public void UpdateZoneNumber()
         {
 
-            if (currentTextZoneCount > maxZoneNumber)
+            if (_currentTextZoneCount > _maxZoneNumber)
             {
                 GameObject zoneNumber = Instantiate(zoneNumberPrefab.gameObject, zoneNumberParent);
-                zoneNumber.GetComponent<ZoneNumberUIController>().SetUIData(currentTextZoneCount, GetLevelBackgroundColor(currentTextZoneCount));
-                maxZoneNumber = currentTextZoneCount;
+                zoneNumber.GetComponent<ZoneNumberUIController>().SetUIData(_currentTextZoneCount, GetLevelBackgroundColor(_currentTextZoneCount));
+                _maxZoneNumber = _currentTextZoneCount;
             }
-            currentZoneCount++;
-            currentTextZoneCount++;
+            _currentZoneCount++;
+            _currentTextZoneCount++;
             DOVirtual.DelayedCall(0.2f, MoveBar);
 
 
@@ -94,17 +94,17 @@ namespace LWheel.LuckyWheelNameSpace
 
         public int GetZoneNumber()
         {
-            return currentZoneCount;
+            return _currentZoneCount;
         }
 
         public void SetDataFromSO(LuckyWheelSO luckyWheelSO)
         {
-            startSpawnCount = luckyWheelSO.zoneBarStartSpawnCount;
-            silverWheelRatio = luckyWheelSO.silverLuckyWheelRatio;
-            goldWheelRatio = luckyWheelSO.goldLuckyWheelRatio;
-             bronzeColor= luckyWheelSO.zoneBarBackgroundBronzeColor;
-            silverColor = luckyWheelSO.zoneBarBackgroundSilverColor;
-            goldColor = luckyWheelSO.zoneBarBackgroundGoldColor;
+            _startSpawnCount = luckyWheelSO.zoneBarStartSpawnCount;
+            _silverWheelRatio = luckyWheelSO.silverLuckyWheelRatio;
+            _goldWheelRatio = luckyWheelSO.goldLuckyWheelRatio;
+            _bronzeColor = luckyWheelSO.zoneBarBackgroundBronzeColor;
+            _silverColor = luckyWheelSO.zoneBarBackgroundSilverColor;
+            _goldColor = luckyWheelSO.zoneBarBackgroundGoldColor;
         }
     }
 }

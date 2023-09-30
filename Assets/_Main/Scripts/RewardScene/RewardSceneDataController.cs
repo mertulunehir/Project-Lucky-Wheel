@@ -15,8 +15,8 @@ namespace LWheel.RewardSceneNamespace
         [SerializeField] private TMP_Text rewardAmount;
         [SerializeField] private TMP_Text rewardSceneInfoText;
 
-        private string failText;
-        private string winText;
+        private string _failText;
+        private string _winText;
         [Inject]private RewardScene rewardScene;
 
 
@@ -28,12 +28,12 @@ namespace LWheel.RewardSceneNamespace
 
             if (currentRewardSO.IsItemBomb())
             {
-                rewardSceneInfoText.text = failText;
+                rewardSceneInfoText.text = _failText;
                 rewardScene.ButtonBombConfig();
             }
             else
             {
-                rewardSceneInfoText.text = winText;
+                rewardSceneInfoText.text = _winText;
                 rewardScene.ButtonRewardConfig();
 
             }
@@ -41,8 +41,8 @@ namespace LWheel.RewardSceneNamespace
 
         public void SetDataFromSO(RewardPanelSO panelSO)
         {
-            failText = panelSO.failText;
-            winText = panelSO.winText;
+            _failText = panelSO.failText;
+            _winText = panelSO.winText;
         }
     }
 

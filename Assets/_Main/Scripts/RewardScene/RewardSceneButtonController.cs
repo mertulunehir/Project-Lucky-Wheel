@@ -23,7 +23,7 @@ namespace LWheel.RewardSceneNamespace
         [Inject] private MoneyManager moneyManager;
         [Inject] private RewardScene rewardScene;
 
-        private int reviveButtonPrice;
+        private int _reviveButtonPrice;
 
         private void OnGiveUpButtonClickedAfterReward()
         {
@@ -39,7 +39,7 @@ namespace LWheel.RewardSceneNamespace
 
         private void OnReviveButtonClicked()
         {
-            moneyManager.BuyWithGold(reviveButtonPrice);
+            moneyManager.BuyWithGold(_reviveButtonPrice);
             panelManager.OpenLuckyWheelPanelAfterReward();
         }
 
@@ -63,7 +63,7 @@ namespace LWheel.RewardSceneNamespace
             continueButton.gameObject.SetActive(false);
             reviveButton.gameObject.SetActive(true);
 
-            if (moneyManager.CanAffordBuyingWithGold(reviveButtonPrice))
+            if (moneyManager.CanAffordBuyingWithGold(_reviveButtonPrice))
                 reviveButton.interactable = true;
             else
                 reviveButton.interactable = false;
@@ -86,8 +86,8 @@ namespace LWheel.RewardSceneNamespace
 
         public void SetDataFromSO(RewardPanelSO panelSO)
         {
-            reviveButtonPrice = panelSO.reviveButtonPrice;
-            buttonCostText.text = reviveButtonPrice.ToString();
+            _reviveButtonPrice = panelSO.reviveButtonPrice;
+            buttonCostText.text = _reviveButtonPrice.ToString();
         }
     }
 }

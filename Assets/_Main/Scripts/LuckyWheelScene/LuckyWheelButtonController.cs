@@ -13,29 +13,29 @@ namespace LWheel.LuckyWheelNameSpace
     {
         [SerializeField] private Button rotateButton;
 
-        private bool canPressButton;
-        private Tween spinAnimTween;
-        private Tween sizeAnimTween;
+        private bool _canPressButton;
+        private Tween _spinAnimTween;
+        private Tween _sizeAnimTween;
 
         [Inject] private LuckyWheel luckyWheel;
 
-        private float buttonRotateTime;
-        private float buttonSpinAnimDelay;
-        private float buttonIdleAnimsizeMuiltiplier;
-        private float buttonClickAnimsizeMuiltiplier;
-        private Ease rotateEase;
+        private float _buttonRotateTime;
+        private float _buttonSpinAnimDelay;
+        private float _buttonIdleAnimsizeMuiltiplier;
+        private float _buttonClickAnimsizeMuiltiplier;
+        private Ease _rotateEase;
 
         private void Start()
         {
-            canPressButton = true;
+            _canPressButton = true;
             StartButtonRotateAnim();
 
         }
         private void OnRotateButtonPressed()
         {
-            if (canPressButton)
+            if (_canPressButton)
             {
-                canPressButton = false;
+                _canPressButton = false;
                 luckyWheel.ChooseRewardAfterButtonClick();
                 StopButtonRotateAnim();
                 RotateAfterButtonClick();
@@ -46,54 +46,54 @@ namespace LWheel.LuckyWheelNameSpace
         public void EnableButton()
         {
             StopButtonRotateAnim();
-            canPressButton = true;
+            _canPressButton = true;
             StartButtonRotateAnim();
         }
 
 
         private void StartButtonRotateAnim()
         {
-            if (canPressButton == true)
+            if (_canPressButton == true)
             {
-                DOVirtual.DelayedCall(buttonSpinAnimDelay, RotateButton);
+                DOVirtual.DelayedCall(_buttonSpinAnimDelay, RotateButton);
             }
         }
 
         private void RotateButton()
         {
-            if(canPressButton==true)
+            if(_canPressButton == true)
             {
-                sizeAnimTween = rotateButton.transform.DOScale(Vector3.one * buttonIdleAnimsizeMuiltiplier, buttonRotateTime * 0.3f).OnComplete(ButtonShrinkAnim);
-                spinAnimTween = rotateButton.transform.DORotate(Vector3.forward*360, buttonRotateTime, RotateMode.LocalAxisAdd).SetEase(rotateEase).OnComplete(StartButtonRotateAnim);
+                _sizeAnimTween = rotateButton.transform.DOScale(Vector3.one * _buttonIdleAnimsizeMuiltiplier, _buttonRotateTime * 0.3f).OnComplete(ButtonShrinkAnim);
+                _spinAnimTween = rotateButton.transform.DORotate(Vector3.forward*360, _buttonRotateTime, RotateMode.LocalAxisAdd).SetEase(_rotateEase).OnComplete(StartButtonRotateAnim);
 
             }
         }
 
         private void RotateAfterButtonClick()
         {
-            spinAnimTween.Kill();
+            _spinAnimTween.Kill();
             rotateButton.transform.localEulerAngles = Vector3.zero;
-            spinAnimTween = rotateButton.transform.DORotate(Vector3.forward * 360, buttonRotateTime, RotateMode.LocalAxisAdd).SetEase(rotateEase).OnComplete(StartButtonRotateAnim);
+            _spinAnimTween = rotateButton.transform.DORotate(Vector3.forward * 360, _buttonRotateTime, RotateMode.LocalAxisAdd).SetEase(_rotateEase).OnComplete(StartButtonRotateAnim);
 
         }
 
         private void GrowAfterButtonClick()
         {
-            sizeAnimTween = rotateButton.transform.DOScale(Vector3.one * buttonClickAnimsizeMuiltiplier, buttonRotateTime * 0.3f).OnComplete(ButtonShrinkAnim);
+            _sizeAnimTween = rotateButton.transform.DOScale(Vector3.one * _buttonClickAnimsizeMuiltiplier, _buttonRotateTime * 0.3f).OnComplete(ButtonShrinkAnim);
         }
 
         private void ButtonShrinkAnim()
         {
-            sizeAnimTween = rotateButton.transform.DOScale(Vector3.one, buttonRotateTime * 0.7f);
+            _sizeAnimTween = rotateButton.transform.DOScale(Vector3.one, _buttonRotateTime * 0.7f);
         }
 
         private void StopButtonRotateAnim()
         {
 
-            spinAnimTween.Kill();
+            _spinAnimTween.Kill();
             rotateButton.transform.localEulerAngles = Vector3.zero;
 
-            sizeAnimTween.Kill();
+            _sizeAnimTween.Kill();
             rotateButton.transform.localScale = Vector3.one;
 
         }
@@ -111,11 +111,11 @@ namespace LWheel.LuckyWheelNameSpace
 
         public void SetDataFromSO(LuckyWheelSO luckyWheelSO)
         {
-            buttonRotateTime = luckyWheelSO.buttonRotateTime;
-            buttonSpinAnimDelay = luckyWheelSO.buttonSpinAnimDelay;
-            buttonIdleAnimsizeMuiltiplier = luckyWheelSO.buttonIdleAnimsizeMuiltiplier;
-            buttonClickAnimsizeMuiltiplier = luckyWheelSO.buttonClickAnimsizeMuiltiplier;
-            rotateEase = luckyWheelSO.spinButtonRotateEase;
+            _buttonRotateTime = luckyWheelSO.buttonRotateTime;
+            _buttonSpinAnimDelay = luckyWheelSO.buttonSpinAnimDelay;
+            _buttonIdleAnimsizeMuiltiplier = luckyWheelSO.buttonIdleAnimsizeMuiltiplier;
+            _buttonClickAnimsizeMuiltiplier = luckyWheelSO.buttonClickAnimsizeMuiltiplier;
+            _rotateEase = luckyWheelSO.spinButtonRotateEase;
         }
     }
 }

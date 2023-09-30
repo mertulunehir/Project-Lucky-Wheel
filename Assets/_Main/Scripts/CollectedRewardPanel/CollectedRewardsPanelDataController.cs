@@ -13,16 +13,16 @@ namespace LWheel.CollectedRewardsNameSpace
         [SerializeField] private CollectedReward collectedRewardPrefab;
         [SerializeField] private Transform collectedRewardPanelParent;
 
-        private List<ItemSO> collectedRewardsSOList = new List<ItemSO>();
-        private List<CollectedReward> collectedRewardList = new List<CollectedReward>();
+        private List<ItemSO> _collectedRewardsSOList = new List<ItemSO>();
+        private List<CollectedReward> _collectedRewardList = new List<CollectedReward>();
 
         [Inject] private MoneyManager moneyManager;
 
         public void AddCollectedReward(ItemSO collectedItemSO, int amount)
         {
-            if (collectedRewardsSOList.Contains(collectedItemSO))
+            if (_collectedRewardsSOList.Contains(collectedItemSO))
             {
-                foreach (CollectedReward reward in collectedRewardList)
+                foreach (CollectedReward reward in _collectedRewardList)
                     if (reward.GetCollectedRewardItemSO().Equals(collectedItemSO))
                     {
                         reward.UpdateCollectedItemAmount(amount);
@@ -38,9 +38,9 @@ namespace LWheel.CollectedRewardsNameSpace
                 else
                 {
                     GameObject collectedReward = Instantiate(collectedRewardPrefab.gameObject, collectedRewardPanelParent);
-                    collectedRewardsSOList.Add(collectedItemSO);
+                    _collectedRewardsSOList.Add(collectedItemSO);
                     collectedReward.GetComponent<CollectedReward>().SetCollectedRewardData(collectedItemSO, amount);
-                    collectedRewardList.Add(collectedReward.GetComponent<CollectedReward>());
+                    _collectedRewardList.Add(collectedReward.GetComponent<CollectedReward>());
                 }
             }
         }
@@ -48,7 +48,7 @@ namespace LWheel.CollectedRewardsNameSpace
         public void GiveCollectedRewards()
         {
             //TODO : Normally all collected rewards will be given to the player but right now only gold and coin gived to player
-            foreach (CollectedReward reward in collectedRewardList)
+            foreach (CollectedReward reward in _collectedRewardList)
             {
                 if (reward.GetCollectedRewardItemSO().IsItemGold())
                 {
@@ -63,8 +63,8 @@ namespace LWheel.CollectedRewardsNameSpace
             foreach (Transform currentReward in collectedRewardPanelParent)
                 Destroy(currentReward.gameObject);
 
-            collectedRewardsSOList.Clear();
-            collectedRewardList.Clear();
+            _collectedRewardsSOList.Clear();
+            _collectedRewardList.Clear();
         }
 
         public void ClearCollectedReward()
@@ -72,8 +72,8 @@ namespace LWheel.CollectedRewardsNameSpace
             foreach (Transform currentReward in collectedRewardPanelParent)
                 Destroy(currentReward.gameObject);
 
-            collectedRewardsSOList.Clear();
-            collectedRewardList.Clear();
+            _collectedRewardsSOList.Clear();
+            _collectedRewardList.Clear();
         }
     }
 }

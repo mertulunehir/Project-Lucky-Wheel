@@ -13,20 +13,20 @@ namespace LWheel.LuckyWheelNameSpace
 
         [Inject] private RewardsDatabase rewardsDatabase;
 
-        private List<Rewards> currentRewards;
+        private List<Rewards> _currentRewards;
 
-        private Rewards currentChosenReward;
-        private int currentChosenRewardAmount;
-        private int currentChosenRewardIndex;
+        private Rewards _currentChosenReward;
+        private int _currentChosenRewardAmount;
+        private int _currentChosenRewardIndex;
 
-        private int silverRewardZoneRatio;
-        private int goldRewardZoneRatio;
+        private int _silverRewardZoneRatio;
+        private int _goldRewardZoneRatio;
 
         [Inject] private LuckyWheelImageController wheelImageController;
 
         public void GetWheelData(int zoneNumber)
         {
-            currentRewards = rewardsDatabase.GetRandomElementsForLuckyWheel(zoneNumber);
+            _currentRewards = rewardsDatabase.GetRandomElementsForLuckyWheel(zoneNumber);
             wheelImageController.SetLuckyWheelImage(zoneNumber);
             SetBombPositionOnWheel(zoneNumber);
         }
@@ -34,50 +34,50 @@ namespace LWheel.LuckyWheelNameSpace
         private void SetBombPositionOnWheel(int zoneNumber)
         {
 
-            if(zoneNumber % silverRewardZoneRatio == 0 || zoneNumber % goldRewardZoneRatio == 0)
+            if(zoneNumber % _silverRewardZoneRatio == 0 || zoneNumber % _goldRewardZoneRatio == 0)
             {
 
             }
             else
             {
-                currentRewards[Random.Range(0, currentRewards.Count)] = rewardsDatabase.GetBombReward() ;
+                _currentRewards[Random.Range(0, _currentRewards.Count)] = rewardsDatabase.GetBombReward() ;
             }
         }
 
         public void SetWheelElementData()
         {
-            currentChosenRewardIndex = Random.Range(0, currentRewards.Count);
+            _currentChosenRewardIndex = Random.Range(0, _currentRewards.Count);
             for (int i = 0; i < currentWheelElements.Count; i++)
             {
-                int randomRewardAmount = Random.Range(currentRewards[i].minRewardAmount, currentRewards[i].maxRewardAmount);
-                currentWheelElements[i].SetWheelElementData(currentRewards[i].itemSO, randomRewardAmount);
+                int randomRewardAmount = Random.Range(_currentRewards[i].minRewardAmount, _currentRewards[i].maxRewardAmount);
+                currentWheelElements[i].SetWheelElementData(_currentRewards[i].itemSO, randomRewardAmount);
 
-                if (currentChosenRewardIndex == i)
-                    currentChosenRewardAmount = randomRewardAmount;
+                if (_currentChosenRewardIndex == i)
+                    _currentChosenRewardAmount = randomRewardAmount;
             }
 
-            currentChosenReward = currentRewards[currentChosenRewardIndex];
+            _currentChosenReward = _currentRewards[_currentChosenRewardIndex];
         }
 
         public int GetCurrentRewardIndex()
         {
-            return currentChosenRewardIndex;
+            return _currentChosenRewardIndex;
         }
 
         public ItemSO GetCurrentRewardItemSO()
         {
-            return currentChosenReward.itemSO;
+            return _currentChosenReward.itemSO;
         }
 
         public int GetCurrentRewardItemAmount()
         {
-            return currentChosenRewardAmount;
+            return _currentChosenRewardAmount;
         }
 
         public void SetDataFromSO(LuckyWheelSO luckyWheelSO)
         {
-            silverRewardZoneRatio = luckyWheelSO.silverLuckyWheelRatio;
-            goldRewardZoneRatio = luckyWheelSO.goldLuckyWheelRatio;
+            _silverRewardZoneRatio = luckyWheelSO.silverLuckyWheelRatio;
+            _goldRewardZoneRatio = luckyWheelSO.goldLuckyWheelRatio;
         }
     }
 }

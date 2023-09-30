@@ -10,12 +10,12 @@ namespace LWheel.RewardDatabase
     {
         [SerializeField] private RewardsDatabaseSO databaseSO;
 
-        private List<Rewards> firstTierRewards = new List<Rewards>();
-        private List<Rewards> secondTierRewards = new List<Rewards>();
-        private List<Rewards> thirdTierRewards = new List<Rewards>();
+        private List<Rewards> _firstTierRewards = new List<Rewards>();
+        private List<Rewards> _secondTierRewards = new List<Rewards>();
+        private List<Rewards> _thirdTierRewards = new List<Rewards>();
 
-        private int secondTierStartZone;
-        private int thirdTierStartZone;
+        private int _secondTierStartZone;
+        private int _thirdTierStartZone;
 
         private Rewards bomb;
 
@@ -26,29 +26,29 @@ namespace LWheel.RewardDatabase
 
         private void SetDataFromSO()
         {
-            firstTierRewards = databaseSO.firstTierRewards;
-            secondTierRewards = databaseSO.secondTierRewards;
-            thirdTierRewards = databaseSO.thirdTierRewards;
+            _firstTierRewards = databaseSO.firstTierRewards;
+            _secondTierRewards = databaseSO.secondTierRewards;
+            _thirdTierRewards = databaseSO.thirdTierRewards;
 
-            secondTierStartZone = databaseSO.secondTierStartZone;
-            thirdTierStartZone = databaseSO.thirdTierStartZone;
+            _secondTierStartZone = databaseSO.secondTierStartZone;
+            _thirdTierStartZone = databaseSO.thirdTierStartZone;
 
             bomb = databaseSO.bomb;
         }
 
         public List<Rewards> GetRandomElementsForLuckyWheel(int zoneNumber)
         {
-            if (zoneNumber < secondTierStartZone)
+            if (zoneNumber < _secondTierStartZone)
             {
-                return GetRandomElements(firstTierRewards);
+                return GetRandomElements(_firstTierRewards);
             }
-            else if (zoneNumber < thirdTierStartZone)
+            else if (zoneNumber < _thirdTierStartZone)
             {
-                return GetRandomElements(secondTierRewards);
+                return GetRandomElements(_secondTierRewards);
             }
             else
             {
-                return GetRandomElements(thirdTierRewards);
+                return GetRandomElements(_thirdTierRewards);
             }
         }
 
