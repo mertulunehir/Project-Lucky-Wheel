@@ -20,3 +20,5 @@ MonoBehaviour:
   cardShakeVibrato: 1
   cardShakeRandomness: 70
   animationDelay: 1.1
+  glowImageRotateSpeed: 2
+  glowBackgroundImageRotateSpeed: 0.5
